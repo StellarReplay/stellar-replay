@@ -1,6 +1,10 @@
 # Changelog
 
-## Unreleased
+## v0.1.0 - 2026-10-08
+
+- First verified Stellar Replay core release. The release includes the read-only
+  capture, fixture, replay, local server, CLI, security, documentation, CI, and
+  cross-platform packaging foundations described in this changelog.
 
 - Established the Stellar Replay project constitution, research record, frozen v0.1 scope, architecture, protocol, security model, and executable roadmap.
 - Added the mandatory phase-completion gate requiring an approved commit, GitHub synchronization, hosted-check verification, and a phase report before a phase can be marked complete.
@@ -14,6 +18,5 @@
 - Hardened Phase 8 secret handling, request/response bounds, endpoint query policy, fixture permissions, and adversarial security coverage with a documented checklist.
 - Completed Phase 9 documentation and developer experience with an executable offline demo, command/method/troubleshooting guides, contributor workflow, and automated documentation drift checks.
 - Completed Phase 10 CI and cross-platform release foundation with Windows/Linux/macOS verification, reproducible tagged release packaging, archive smoke tests, embedded release versions, checksum generation, least-privilege workflow permissions, and release installation guidance.
-- Completed Phase 11 final audit with resolved documentation/CI drift, explicit accepted limitations, release conditions, and a conditional GO decision for Phase 12.
 - Completed Phase 11 final audit with resolved documentation/CI drift, explicit accepted limitations, release conditions, and a conditional GO decision for Phase 12.
 

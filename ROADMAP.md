@@ -43,7 +43,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 9 | Documentation and developer experience | COMPLETE | executable walkthrough, command/method/troubleshooting docs, contributor path, automated link and drift checks, local and hosted verification |
 | 10 | CI and cross-platform release | COMPLETE | matrix and artifacts, local package smoke tests, hosted verification |
 | 11 | Release candidate and final audit | COMPLETE | final audit, findings, go/no-go, local and hosted verification |
-| 12 | v0.1.0 release | NOT_STARTED | published, verified release |
+| 12 | v0.1.0 release | IN_PROGRESS | published, verified release |
 
 ## Phase execution protocol
 
@@ -131,7 +131,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 ### Phase 12 — v0.1.0 release
 
-**Objective/why:** publish only a verified, truthful release. **Dependencies:** Phase 11 go decision. **Scope:** tag, GitHub release, binaries/checksums, installation docs, post-release smoke test, stabilization note. **Non-scope:** unplanned features or adoption claims.
+**Objective/why:** publish only a verified, truthful release. **Dependencies:** Phase 11 go decision. **Scope:** tag, GitHub release, binaries/checksums, installation docs, post-release smoke test, stabilization note. **Non-scope:** unplanned features or adoption claims. **Status:** IN_PROGRESS; release preparation is authorized and evidence will be recorded in `PHASE_12_REPORT.md`.
 
 **Acceptance:** published artifacts match checksums; Windows/Linux/macOS smoke tests pass; changelog and known limitations are correct; release URL and evidence are recorded. **Commands:** clean-tree check, archive extraction, binary `--help`/documented smoke, checksum verification. **Artifacts:** release, notes, audit evidence. **Risks/recovery:** bad artifact; withdraw/replace with a documented patch release, preserve audit trail. **Network:** release hosting required; app tests remain offline. **Review:** maintainer go/no-go.
 

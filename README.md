@@ -57,7 +57,11 @@ A fixture is a captured RPC interaction, not blockchain truth. It records reques
 
 ## Installation and contribution
 
-No release exists yet. The chosen distribution is a statically linked Go binary for Windows, Linux, and macOS. Read [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and the current phase in [ROADMAP.md](ROADMAP.md) before implementation.
+Phase 10 defines tagged releases as statically linked archives for Linux amd64,
+Windows amd64, and macOS amd64. See [docs/RELEASES.md](docs/RELEASES.md) for
+installation and checksum verification. For source development, read
+[CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md),
+and the current phase in [ROADMAP.md](ROADMAP.md).
 
 Extended guides and integration documentation will live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository will provide the GitHub Actions integration after the core CLI has a released interface. This core README remains sufficient to understand the product and its boundaries.
 

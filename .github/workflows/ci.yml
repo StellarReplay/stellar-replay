@@ -8,27 +8,36 @@ permissions:
   contents: read
 
 jobs:
-  foundation:
-    runs-on: ubuntu-latest
+  verify:
+    name: Verify (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
-      - name: Test Go packages when implementation exists
+      - name: Check formatting
+        shell: bash
+        run: test -z "$(gofmt -l .)"
+      - name: Test Go packages
+        run: go test ./...
+      - name: Vet Go packages
+        run: go vet ./...
+      - name: Build CLI
+        run: go build -trimpath ./cmd/stellar-replay
+      - name: CLI smoke test
         shell: bash
         run: |
-          if find . -name '*.go' -not -path './.git/*' | grep -q .; then
-            go test ./...
-          else
-            echo 'No Go implementation packages yet; foundation verification passed.'
-          fi
-      - name: Vet Go packages when implementation exists
+          test "$(go run ./cmd/stellar-replay version)" = "0.1.0-dev"
+          go run ./cmd/stellar-replay help >/dev/null
+      - name: Race tests on supported runner
+        if: runner.os == 'Linux'
+        run: go test -race ./...
+      - name: Verify clean tree
         shell: bash
-        run: |
-          if find . -name '*.go' -not -path './.git/*' | grep -q .; then
-            go vet ./...
-          else
-            echo 'No Go implementation packages yet; vet deferred to the implementation phase.'
-          fi
+        run: git diff --exit-code
 

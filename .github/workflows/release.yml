@@ -1,16 +1,94 @@
 name: Release
 
 on:
-  workflow_dispatch:
   push:
     tags: ['v*.*.*']
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  plan:
-    runs-on: ubuntu-latest
+  package:
+    name: Package ${{ matrix.goos }}-${{ matrix.goarch }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            goos: linux
+            goarch: amd64
+            archive: tar.gz
+          - os: windows-latest
+            goos: windows
+            goarch: amd64
+            archive: zip
+          - os: macos-latest
+            goos: darwin
+            goarch: amd64
+            archive: tar.gz
+    runs-on: ${{ matrix.os }}
     steps:
-      - run: echo 'Release workflow is reserved for Phase 10; no release is claimed by the bootstrap.'
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+      - name: Package release archive on Unix
+        if: runner.os != 'Windows'
+        shell: bash
+        run: bash scripts/package.sh "${GITHUB_REF_NAME#v}" "${{ matrix.goos }}" "${{ matrix.goarch }}"
+      - name: Package release archive on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/package.ps1 -Version "$($env:GITHUB_REF_NAME.Substring(1))" -GOOS "${{ matrix.goos }}" -GOARCH "${{ matrix.goarch }}"
+      - name: Verify archive contents on Unix
+        if: runner.os != 'Windows'
+        shell: bash
+        run: bash scripts/verify-archive.sh "dist/stellar-replay-${GITHUB_REF_NAME#v}-${{ matrix.goos }}-${{ matrix.goarch }}.${{ matrix.archive }}"
+      - name: Verify archive contents on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/verify-archive.ps1 -Archive "dist/stellar-replay-$($env:GITHUB_REF_NAME.Substring(1))-${{ matrix.goos }}-${{ matrix.goarch }}.zip"
+      - name: Verify packaged binary version
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          mkdir -p smoke
+          tar -xzf "dist/stellar-replay-${GITHUB_REF_NAME#v}-${{ matrix.goos }}-${{ matrix.goarch }}.tar.gz" -C smoke
+          test "$(./smoke/stellar-replay version)" = "${GITHUB_REF_NAME#v}"
+      - name: Verify packaged Windows binary version
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $smoke = Join-Path $env:RUNNER_TEMP "stellar-replay-smoke"
+          if (Test-Path -LiteralPath $smoke) { Remove-Item -LiteralPath $smoke -Recurse -Force }
+          Expand-Archive -LiteralPath "dist/stellar-replay-$($env:GITHUB_REF_NAME.Substring(1))-windows-amd64.zip" -DestinationPath $smoke
+          $version = & (Join-Path $smoke "stellar-replay.exe") version
+          if ($version -ne $env:GITHUB_REF_NAME.Substring(1)) { throw "unexpected packaged version: $version" }
+      - name: Upload archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: stellar-replay-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: dist/stellar-replay-*
 
+  publish:
+    name: Publish tagged release
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: stellar-replay-*
+          merge-multiple: true
+      - name: Generate checksums
+        working-directory: dist
+        run: sha256sum stellar-replay-* > SHA256SUMS
+      - name: Verify checksums
+        working-directory: dist
+        run: sha256sum -c SHA256SUMS
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" dist/* --repo "$GITHUB_REPOSITORY" --title "Stellar Replay $GITHUB_REF_NAME" --generate-notes

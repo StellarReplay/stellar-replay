@@ -41,7 +41,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 7 | Deterministic test workflow | COMPLETE | checked-in sanitized fixture matrix, loopback-only offline example, repeated/concurrent proof, local and hosted verification |
 | 8 | Security and sanitization hardening | COMPLETE | adversarial controls, default redaction, security checklist, local and hosted verification |
 | 9 | Documentation and developer experience | COMPLETE | executable walkthrough, command/method/troubleshooting docs, contributor path, automated link and drift checks, local and hosted verification |
-| 10 | CI and cross-platform release | NOT_STARTED | matrix and artifacts |
+| 10 | CI and cross-platform release | IN_PROGRESS | matrix and artifacts |
 | 11 | Release candidate and final audit | NOT_STARTED | audit report and go/no-go |
 | 12 | v0.1.0 release | NOT_STARTED | published, verified release |
 
@@ -119,7 +119,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 ### Phase 10 — CI and cross-platform release
 
-**Objective/why:** produce credible binaries. **Dependencies:** Phases 6–9. **Scope:** GitHub Actions on Windows/Linux/macOS, Go formatting/test/vet, race on supported runner, tagged builds, archives, checksums, permissions. **Non-scope:** signing or registry publishing unless separately approved.
+**Objective/why:** produce credible binaries. **Dependencies:** Phases 6–9. **Scope:** GitHub Actions on Windows/Linux/macOS, Go formatting/test/vet, race on supported runner, tagged builds, archives, checksums, permissions. **Non-scope:** signing or registry publishing unless separately approved. **Status:** IN_PROGRESS; implementation is under verification and evidence will be recorded in `PHASE_10_REPORT.md`.
 
 **Tests:** hosted matrix, archive smoke tests, checksum verification, clean-tree build. **Acceptance:** declared platforms pass; release artifacts contain only intended files; docs explain installation. **Commands:** `go test ./...`; `go vet ./...`; `go build ./cmd/stellar-replay`; workflow run IDs recorded. **Artifacts:** `.github/workflows`, release scripts, docs. **Risks/recovery:** runner drift; pin actions and record tool versions. **Network:** CI downloads dependencies; product tests offline. **Review:** release/security review justified.
 

@@ -13,4 +13,5 @@
 - Added Phase 7 sanitized fixture matrix and a loopback-only offline integration example covering repeated and concurrent deterministic replay.
 - Hardened Phase 8 secret handling, request/response bounds, endpoint query policy, fixture permissions, and adversarial security coverage with a documented checklist.
 - Completed Phase 9 documentation and developer experience with an executable offline demo, command/method/troubleshooting guides, contributor workflow, and automated documentation drift checks.
+- Phase 10 in progress: added Windows/Linux/macOS CI verification, reproducible tagged release packaging, archive smoke tests, embedded release versions, checksum generation, and release installation guidance.
 

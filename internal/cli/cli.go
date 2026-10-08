@@ -23,8 +23,11 @@ const (
 	ExitOK      = 0
 	ExitFailure = 1
 	ExitUsage   = 2
-	Version     = "0.1.0-dev"
 )
+
+// Version is overridden by release builds through -ldflags. Development builds
+// retain an explicit suffix so they are not confused with a published binary.
+var Version = "0.1.0-dev"
 
 // Run executes one CLI invocation and returns a stable process exit code.
 func Run(args []string, stdout, stderr io.Writer) int {

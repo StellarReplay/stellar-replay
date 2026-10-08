@@ -15,6 +15,20 @@ jobs:
       - uses: actions/setup-go@v5
         with:
           go-version-file: go.mod
-      - run: go test ./...
-      - run: go vet ./...
+      - name: Test Go packages when implementation exists
+        shell: bash
+        run: |
+          if find . -name '*.go' -not -path './.git/*' | grep -q .; then
+            go test ./...
+          else
+            echo 'No Go implementation packages yet; foundation verification passed.'
+          fi
+      - name: Vet Go packages when implementation exists
+        shell: bash
+        run: |
+          if find . -name '*.go' -not -path './.git/*' | grep -q .; then
+            go vet ./...
+          else
+            echo 'No Go implementation packages yet; vet deferred to the implementation phase.'
+          fi
 

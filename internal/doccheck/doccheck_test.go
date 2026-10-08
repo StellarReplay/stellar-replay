@@ -15,7 +15,7 @@ import (
 func TestMarkdownLinksAndRequiredDocumentationPaths(t *testing.T) {
 	root := repositoryRoot(t)
 	required := []string{
-		"README.md", "CONTRIBUTING.md", "ROADMAP.md", "PROJECT_CONTEXT.md",
+		"README.md", "CONTRIBUTING.md", "ROADMAP.md", "PROJECT_CONTEXT.md", "FINAL_AUDIT.md",
 		"docs/COMMANDS.md", "docs/DEMO.md", "docs/METHODS.md", "docs/TROUBLESHOOTING.md",
 		"docs/FIXTURE_SCHEMA.md", "docs/CAPTURE.md", "docs/REPLAY.md", "docs/RELEASES.md", "docs/SERVER.md",
 		"docs/SECURITY.md", "docs/SECURITY_CHECKLIST.md", "examples/README.md",

@@ -1,6 +1,6 @@
 # Stellar Replay
 
-Stellar Replay is a planned Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
+Stellar Replay is a Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
 
 > Status: the v0.1 fixture, capture, replay, local server, and CLI foundation are implemented. Cross-platform release packaging and the remaining workflow phases are still in progress.
 

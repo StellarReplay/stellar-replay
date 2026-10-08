@@ -42,7 +42,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 8 | Security and sanitization hardening | COMPLETE | adversarial controls, default redaction, security checklist, local and hosted verification |
 | 9 | Documentation and developer experience | COMPLETE | executable walkthrough, command/method/troubleshooting docs, contributor path, automated link and drift checks, local and hosted verification |
 | 10 | CI and cross-platform release | COMPLETE | matrix and artifacts, local package smoke tests, hosted verification |
-| 11 | Release candidate and final audit | NOT_STARTED | audit report and go/no-go |
+| 11 | Release candidate and final audit | COMPLETE | final audit, findings, go/no-go, local and hosted verification |
 | 12 | v0.1.0 release | NOT_STARTED | published, verified release |
 
 ## Phase execution protocol
@@ -125,7 +125,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 ### Phase 11 — Release candidate and final audit
 
-**Objective/why:** prevent documentation, security, and behavior drift. **Dependencies:** Phase 10. **Scope:** create `FINAL_AUDIT.md`; verify methods, fixtures, matching, malformed input, concurrency, shutdown, secrets, sanitization, docs, CI, binaries, dead code/placeholders. **Non-scope:** new features unless audit blocks release.
+**Objective/why:** prevent documentation, security, and behavior drift. **Dependencies:** Phase 10. **Scope:** create `FINAL_AUDIT.md`; verify methods, fixtures, matching, malformed input, concurrency, shutdown, secrets, sanitization, docs, CI, binaries, dead code/placeholders. **Non-scope:** new features unless audit blocks release. **Status:** COMPLETE; evidence and the conditional Phase 12 go decision are in `FINAL_AUDIT.md`.
 
 **Tests:** full suite, race/static checks, release smoke tests, final network-boundary check. **Acceptance:** every finding is resolved, accepted with owner/evidence, or blocks release; independent Codex review if available; go/no-go is explicit. **Commands:** all project checks plus `git diff --check` and clean-tree inspection. **Artifacts:** `FINAL_AUDIT.md`, release checklist, updated changelog/context. **Risks/recovery:** audit discovers scope defect; defer release and update roadmap, never hide it. **Network:** hosted validation may be needed; no live network for default tests. **Review:** required independent review if environment supports it.
 

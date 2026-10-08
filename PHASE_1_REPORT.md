@@ -49,6 +49,17 @@ Validate the v0.1 RPC assumptions and freeze the method, request, response, matc
 - Cross-repository reference search: PASS; no stale repository name found
 - Phase 0 GitHub gate: PASS before Phase 1
 
+## Synchronized commits and hosted evidence
+
+- Core Phase 1 decision/protocol commit: `69bd5f3` — https://github.com/StellarReplay/stellar-replay/commit/69bd5f3
+- Action cross-reference commit: `64d64c7` — https://github.com/StellarReplay/stellar-replay-action/commit/64d64c7
+- Docs cross-reference commit: `e987eb5` — https://github.com/StellarReplay/stellar-replay-docs/commit/e987eb5
+- Core CI: https://github.com/StellarReplay/stellar-replay/actions/runs/37720753858 — PASS
+- Action CI: https://github.com/StellarReplay/stellar-replay-action/actions/runs/37720763406 — PASS
+- Docs CI: https://github.com/StellarReplay/stellar-replay-docs/actions/runs/37720763216 — PASS
+
+The final report checkpoint is pushed after the decision commit above; its exact SHA is recorded by the final handoff and `git rev-parse HEAD`.
+
 ## Next gate
 
 Phase 2 — Fixture Schema and Validation. It may begin only after this report and the pushed commits are verified. Phase 2 is the first implementation phase.

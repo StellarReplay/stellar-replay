@@ -48,17 +48,8 @@ The default integration proof is also runnable without credentials or network:
 go test ./examples -run TestOfflineReplayWorkflow -count=1
 ```
 
-## Intended walkthrough
-
-```text
-stellar-replay record --rpc-url https://soroban-testnet.stellar.org \
-  --method getLatestLedger --params '{}'
-stellar-replay inspect fixtures/latest-ledger.json
-stellar-replay validate fixtures/latest-ledger.json
-stellar-replay serve fixtures/latest-ledger.json --listen 127.0.0.1:8787
-```
-
-The exact flags and output are implementation work and must not be inferred from this sketch. The eventual demo is specified in [docs/DEMO.md](docs/DEMO.md).
+See the executable [demo](docs/DEMO.md), [command reference](docs/COMMANDS.md),
+[supported methods](docs/METHODS.md), and [troubleshooting guide](docs/TROUBLESHOOTING.md).
 
 ## Fixture philosophy
 

@@ -43,6 +43,8 @@ A fixture is a captured RPC interaction, not blockchain truth. It records reques
 
 No release exists yet. The chosen distribution is a statically linked Go binary for Windows, Linux, and macOS. Read [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and the current phase in [ROADMAP.md](ROADMAP.md) before implementation.
 
+Extended guides and integration documentation will live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository will provide the GitHub Actions integration after the core CLI has a released interface. This core README remains sufficient to understand the product and its boundaries.
+
 ## Security
 
 The product is read-only by default. It must never require or capture secret keys, seed phrases, signing material, or authentication secrets. See [SECURITY.md](SECURITY.md) for reporting and [docs/SECURITY.md](docs/SECURITY.md) for the product threat model.

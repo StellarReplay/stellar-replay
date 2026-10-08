@@ -6,6 +6,23 @@ Repository state is authoritative. Future agents must inspect the tree, `git sta
 
 Stellar Replay is developer infrastructure for turning controlled Stellar RPC interactions into deterministic local fixtures for tests. It is not an explorer, wallet, generic RPC client, verifier, or hosted service.
 
+## GitHub organization and repository topology
+
+The GitHub organization is `StellarReplay`. The current three-repository topology is:
+
+```text
+StellarReplay/
+├── stellar-replay         # core Go product and CLI
+├── stellar-replay-action  # GitHub Actions integration
+└── stellar-replay-docs    # extended documentation and guides
+```
+
+`stellar-replay` is the source of truth for core behavior, the CLI, fixture schema and semantics, capture, normalization, sanitization, hashing, replay, and the local server. `stellar-replay-action` owns only Action metadata, wrappers, examples, and Action release behavior; it consumes a released core interface and must not copy the engine. `stellar-replay-docs` owns extended tutorials, integration guides, navigation, and conceptual material; it must link to the core repository for executable behavior.
+
+The canonical fixture format belongs to the core repository. Other repositories consume a released schema version and cannot silently fork it. Cross-repository changes require coordinated documentation, compatibility notes, and independent repository checks.
+
+Future candidates such as SDK/integrations, conformance fixtures, or ecosystem tooling are discovery-gated. A new repository is justified only by distinct ownership, release cadence, dependency boundary, contributor workflow, or security boundary. Repository count is not a goal.
+
 ## Frozen v0.1
 
 Go CLI; human-readable JSON fixtures; schema validation; SHA-256 integrity; capture from a configured HTTPS RPC endpoint; inspect; replay; local HTTP JSON-RPC server; deterministic request matching; sanitization; offline tests; CI and cross-platform release packaging.
@@ -25,6 +42,10 @@ Supported methods: `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerE
 ## Architecture decision
 
 Go is selected over TypeScript for a single cross-platform binary, simple HTTP concurrency, standard JSON tooling, and low operational footprint. TypeScript has excellent SDK ergonomics and ecosystem reach, but would add a runtime/package distribution decision for a CLI whose core needs are protocol and file handling. The implementation may later add an optional SDK adapter, but v0.1 core does not depend on one.
+
+## Versioning and releases
+
+The core product owns the `stellar-replay` CLI version and releases `v0.1.0` independently. The Action uses its own semantic version and should depend only on a released core binary/interface, never an unreleased commit. Documentation is versioned by compatibility with the core release and identifies the release or branch it describes; it is not a monolithic binary release.
 
 ## Trust and security
 

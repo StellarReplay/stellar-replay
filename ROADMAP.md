@@ -8,6 +8,25 @@ This is the executable master plan. Statuses are `NOT_STARTED`, `IN_PROGRESS`, `
 - **P1 / time permitting:** SDK adapters, richer diffing/metadata, more methods, UX polish.
 - **P2 / cannot delay v0.1:** browser/UI, full proxy, record-all traffic, visualization, AI, unrelated integrations.
 
+## Repository architecture
+
+The initial open-source topology is intentionally three repositories under the `StellarReplay` organization:
+
+```text
+StellarReplay/
+├── stellar-replay
+├── stellar-replay-action
+└── stellar-replay-docs
+```
+
+- `stellar-replay` owns the Go core, CLI, canonical fixture schema, replay semantics, local server, core tests, release binaries, and the minimum documentation required to use the product.
+- `stellar-replay-action` owns GitHub Action metadata, Action-specific integration/wrapper code, examples, tests, and its own release lifecycle. It consumes a released core interface and never duplicates the Go engine.
+- `stellar-replay-docs` owns extended guides, tutorials, integration documentation, conceptual explanations, and documentation navigation. It links to the core README and does not redefine protocol or fixture behavior.
+
+The fixture schema and replay semantics remain centralized in the core repository. Repository splits are not a substitute for packages or services. A future repository is created only when distinct ownership, release cadence, dependency/security boundary, or contributor workflow creates measurable value. Candidates include SDK/integrations, conformance fixtures, and ecosystem tooling; none are committed now.
+
+Core releases, Action releases, and docs versions are independent but compatibility-linked. A core schema or CLI change requires a versioned compatibility note; the Action must target a released core version; docs identify the core release or branch they describe. Cross-repository links and claims are checked before each phase is closed.
+
 ## Phase register
 
 | Phase | Name | Status | Gate |
@@ -42,7 +61,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Research:** official Stellar RPC method catalog, SDKs, RPC repository, JSON-RPC conventions, general VCR/record-replay, and Soroban fork/testing approaches. **Tasks:** freeze four read-only methods; define trust model and matching; record assumptions and citations; add contribution and release policy. **Tests/checks:** tree inspection, required-file check, `go mod tidy` only when code exists, `git diff --check`; no live network required. **Docs:** all foundation docs and changelog entry.
 
-**Acceptance:** repository identity is Stellar Replay; Go rationale and MVP are explicit; unsupported methods and non-goals are explicit; architecture/protocol/security/competitive/demo docs exist; no document claims unimplemented functionality; GitHub foundation exists; phase workflow is executable; an approved commit is synchronized to GitHub and the foundation workflow is verified, or the phase remains `READY_FOR_REVIEW` until that is possible. **Commands:** `git status --short --branch`; `git remote -v`; `rg --files`; `git diff --check`; inspect required headings; after synchronization, inspect the GitHub commit and Actions run. **Artifacts:** foundation files, directory tree, phase report, commit, and hosted evidence. **Risks/recovery:** accidental overlap with another repository; recover by preserving the unrelated repo and using a dedicated directory. **Network:** research only for local work; GitHub access is required for the completion gate. **Review:** independent review not required yet; architecture review may be requested after Phase 1.
+**Acceptance:** repository identity is Stellar Replay; Go rationale and MVP are explicit; unsupported methods and non-goals are explicit; architecture/protocol/security/competitive/demo docs exist; no document claims unimplemented functionality; GitHub foundation exists; repository ownership and topology are documented; phase workflow is executable; an approved commit is synchronized to GitHub and the foundation workflow is verified, or the phase remains `READY_FOR_REVIEW` until that is possible. **Commands:** `git status --short --branch`; `git remote -v`; `rg --files`; `git diff --check`; inspect required headings; after synchronization, inspect the GitHub commit and Actions run. **Artifacts:** foundation files, directory tree, topology decision, phase report, commit, and hosted evidence. **Risks/recovery:** accidental overlap with another repository; recover by preserving the unrelated repo and using a dedicated directory. **Network:** research only for local work; GitHub access is required for the completion gate. **Review:** independent review not required yet; architecture review may be requested after Phase 1.
 
 ### Phase 1 — Research and MVP freeze
 

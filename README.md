@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0"><img src="https://img.shields.io/github/v/release/StellarReplay/stellar-replay?display_name=tag&sort=semver" alt="Latest release" /></a>
-  <a href="https://github.com/StellarReplay/stellar-replay/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/StellarReplay/stellar-replay/ci.yml/CI?branch=main&label=CI" alt="CI status" /></a>
+  <a href="https://github.com/StellarReplay/stellar-replay/actions/workflows/ci.yml"><img src="https://github.com/StellarReplay/stellar-replay/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI status" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-4F8CFF" alt="Apache-2.0 license" /></a>
   <img src="https://img.shields.io/badge/Stellar%20%2F%20Soroban-RPC-5BE7C4" alt="Stellar and Soroban RPC" />
 </p>

@@ -1,7 +1,7 @@
 # Phase 0 Report — Repository Constitution and Foundation
 
 Date: 2026-10-08
-Status: `READY_FOR_REVIEW`
+Status: `COMPLETE`
 
 ## Scope
 
@@ -20,7 +20,7 @@ Phase 0 established the Stellar Replay identity, v0.1 boundary, Go implementatio
 - Phase execution and GitHub completion protocol: PASS
 - Required repository foundation files: PASS
 - No fake implementation or untruthful command claim: PASS
-- GitHub synchronization and hosted check verification: PENDING
+- GitHub synchronization and hosted check verification: PASS
 
 ## Local verification
 
@@ -28,6 +28,9 @@ Phase 0 established the Stellar Replay identity, v0.1 boundary, Go implementatio
 - `go test ./...` — PASS with no packages yet; implementation is intentionally deferred
 - `go vet ./...` — PASS with no packages yet
 - Required-file and repository-tree inspection — PASS
+- Core GitHub Actions CI — PASS: https://github.com/StellarReplay/stellar-replay/actions/runs/37719567092
+- Action GitHub Actions CI — PASS: https://github.com/StellarReplay/stellar-replay-action/actions/runs/37719525099
+- Docs GitHub Actions CI — PASS: https://github.com/StellarReplay/stellar-replay-docs/actions/runs/37719523919
 
 ## Artifacts
 
@@ -35,9 +38,15 @@ The approved foundation includes the root project documents, `docs/`, `.github/`
 
 ## GitHub gate
 
-The approved local foundation commit is the current root commit with message `Establish Stellar Replay project foundation` (verify with `git rev-parse HEAD`). This phase is not marked `COMPLETE` because the repository has no configured remote and the authenticated GitHub CLI token for account `Marvelg256` is invalid. After `gh auth login -h github.com` succeeds, create or connect the intended public repository, push the initial commit, inspect the remote commit, and verify the CI workflow run. Then update this report, `ROADMAP.md`, and `PROJECT_CONTEXT.md` with the repository URL, commit SHA, workflow URL, and results before marking Phase 0 complete.
+PASS. The three public repositories are synchronized under the `StellarReplay` organization:
+
+- Core: https://github.com/StellarReplay/stellar-replay — verified `main` push and CI success on `92d22e1`.
+- Action: https://github.com/StellarReplay/stellar-replay-action — verified `main` push and CI success on `f094648`.
+- Docs: https://github.com/StellarReplay/stellar-replay-docs — verified `main` push and CI success on `5799e78`.
+
+The core repository retains the original foundation history. The Action and docs repositories begin with independent foundation commits. No personal namespace is used.
 
 ## Remaining risk
 
-The hosted CI workflow currently verifies the documentation-only foundation and will become meaningful once implementation packages exist. Phase 1 must not begin until the GitHub gate is resolved and the owner explicitly authorizes Phase 1.
+The hosted core workflow currently verifies the documentation-only foundation and will run Go tests/vet once implementation packages exist. Phase 1 remains separate and must not begin until the owner explicitly authorizes it.
 

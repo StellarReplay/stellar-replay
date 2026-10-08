@@ -31,7 +31,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 
 | Phase | Name | Status | Gate |
 |---:|---|---|---|
-| 0 | Constitution and repository foundation | READY_FOR_REVIEW | local foundation checks pass; commit/remote/hosted verification pending |
+| 0 | Constitution and repository foundation | COMPLETE | three repositories synchronized; core, Action, and docs foundation workflows pass |
 | 1 | Research and MVP freeze | NOT_STARTED | cited research + decision record |
 | 2 | Fixture schema and validation | NOT_STARTED | valid/invalid fixture tests |
 | 3 | Capture | NOT_STARTED | controlled live capture + offline tests |
@@ -55,7 +55,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 ### Phase 0 — Constitution and repository foundation
 
-**Objective/why:** make the project understandable and implementation-ready without fake product code. **Dependencies:** none. **Status:** IN_PROGRESS.
+**Objective/why:** make the project understandable and implementation-ready without fake product code. **Dependencies:** none. **Status:** COMPLETE after local and hosted verification.
 
 **Scope:** identity, Go choice, context, README, architecture, protocol, security, competitive research, demo plan, OSS files, Go module, purposeful source/test directories, templates, and this roadmap. **Non-scope:** replay engine, commands, server, sample claims, live capture.
 

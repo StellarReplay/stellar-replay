@@ -73,5 +73,5 @@ Local code and documentation are not the whole phase. A completed phase must hav
 
 ## Current phase
 
-Phase 0, repository and project constitution: `READY_FOR_REVIEW` locally. The foundation files exist and local checks pass, but this new repository has no commit or GitHub remote yet. Phase 1 remains `NOT_STARTED`. No product core implementation is authorized by this bootstrap task.
+Phase 0, repository and project constitution plus initial GitHub topology: `COMPLETE`. The core, Action, and docs repositories are public under `StellarReplay`, their `main` branches are synchronized, and their foundation workflows pass. Phase 1 remains `NOT_STARTED`; no product core implementation is authorized by this repository-topology task.
 

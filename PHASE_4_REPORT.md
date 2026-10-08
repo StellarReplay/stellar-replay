@@ -65,6 +65,14 @@ scope. The public CLI and local replay server are later phases.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 5 local replay server remains
+The implementation commit was pushed to the public `StellarReplay/stellar-replay`
+repository on `main`:
+
+- implementation commit: `75b5088e0f16c39a6b3541291593fdc7839e468b`
+- implementation commit URL: <https://github.com/StellarReplay/stellar-replay/commit/75b5088e0f16c39a6b3541291593fdc7839e468b>
+- hosted CI run: <https://github.com/StellarReplay/stellar-replay/actions/runs/37723243370>
+- hosted CI result: `success`
+
+This report checkpoint is committed separately after hosted verification so the
+remote report contains the evidence above. Phase 5 local replay server remains
 `NOT_STARTED`; no Phase 5 work is included here.

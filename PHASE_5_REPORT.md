@@ -63,6 +63,14 @@ work.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 6 CLI integration remains `NOT_STARTED`;
-no Phase 6 work is included here.
+The implementation commit was pushed to the public `StellarReplay/stellar-replay`
+repository on `main`:
+
+- implementation commit: `43763576db7a3e8c69647c4992048713f242bd14`
+- implementation commit URL: <https://github.com/StellarReplay/stellar-replay/commit/43763576db7a3e8c69647c4992048713f242bd14>
+- hosted CI run: <https://github.com/StellarReplay/stellar-replay/actions/runs/37724060283>
+- hosted CI result: `success`
+
+This report checkpoint is committed separately after hosted verification so the
+remote report contains the evidence above. Phase 6 CLI integration remains
+`NOT_STARTED`; no Phase 6 work is included here.

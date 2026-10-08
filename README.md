@@ -2,7 +2,7 @@
 
 Stellar Replay is a planned Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
 
-> Status: fixture schema, validation, hashing, atomic storage, controlled capture, deterministic replay, and the local replay server are implemented. The CLI is not implemented yet.
+> Status: the v0.1 fixture, capture, replay, local server, and CLI foundation are implemented. Cross-platform release packaging and the remaining workflow phases are still in progress.
 
 ## Why
 
@@ -19,9 +19,28 @@ flowchart LR
 
 ## v0.1 promise
 
-Planned commands are `record`, `inspect`, `validate`, `replay`, and `serve`. v0.1 will support read-only `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerEntries`. It will not submit transactions, simulate transactions, execute contract code, or silently contact a live network during replay. The frozen request and endpoint policy is recorded in [docs/PHASE_1_DECISION.md](docs/PHASE_1_DECISION.md).
+Available commands are `record`, `inspect`, `validate`, `replay`, and `serve`. v0.1 supports read-only `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerEntries`. It will not submit transactions, simulate transactions, execute contract code, or silently contact a live network during replay. The frozen request and endpoint policy is recorded in [docs/PHASE_1_DECISION.md](docs/PHASE_1_DECISION.md).
 
-The command walkthrough remains planned; those commands do not work yet. See the implemented [fixture schema](docs/FIXTURE_SCHEMA.md), [capture contract](docs/CAPTURE.md), [replay contract](docs/REPLAY.md), [server contract](docs/SERVER.md), [ROADMAP.md](ROADMAP.md), and [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+## Quickstart
+
+Build the local binary, then record is the only command below that contacts a live
+endpoint. It requires an explicit HTTPS endpoint and is opt-in:
+
+```text
+go build -o stellar-replay ./cmd/stellar-replay
+stellar-replay record --rpc-url https://soroban-testnet.stellar.org \
+  --network testnet --method getLatestLedger --output fixtures/latest-ledger.json
+stellar-replay validate --fixture fixtures/latest-ledger.json
+stellar-replay inspect --fixture fixtures/latest-ledger.json
+stellar-replay replay --fixture fixtures/latest-ledger.json --method getLatestLedger
+stellar-replay serve --fixture fixtures/latest-ledger.json --listen 127.0.0.1:8787
+```
+
+`replay`, `validate`, `inspect`, and `serve` are offline. `serve` remains running
+until interrupted and exposes the fixture at `http://127.0.0.1:8787/`. See the
+[fixture schema](docs/FIXTURE_SCHEMA.md), [capture contract](docs/CAPTURE.md),
+[replay contract](docs/REPLAY.md), and [server contract](docs/SERVER.md) for
+limits and exact behavior.
 
 ## Intended walkthrough
 

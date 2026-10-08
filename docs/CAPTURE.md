@@ -2,7 +2,7 @@
 
 Phase 3 implements one controlled capture operation in `internal/capture`. It is
 the only current component that can contact a configured Stellar RPC endpoint.
-There is not yet a CLI command; command integration is Phase 6 work.
+The Phase 6 `record` command is a thin wrapper around this operation.
 
 ## Operation
 

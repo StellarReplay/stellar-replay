@@ -43,7 +43,8 @@ sequenceDiagram
   selection. See [`REPLAY.md`](REPLAY.md).
 - `internal/server`: loopback HTTP JSON-RPC transport, malformed-input handling,
   concurrency, bounded bodies, and clean shutdown. See [`SERVER.md`](SERVER.md).
-- `internal/cli`: command parsing and user-facing errors.
+- `internal/cli`: command parsing, stable exit codes, lifecycle wiring, and
+  user-facing errors for `record`, `inspect`, `validate`, `replay`, and `serve`.
 - `cmd/stellar-replay`: minimal executable entry point.
 
 Interfaces are limited to transport, fixture store, clock, and replay source where tests genuinely need substitution. There is no generic plugin framework in v0.1.

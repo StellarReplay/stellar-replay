@@ -37,7 +37,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 3 | Capture | COMPLETE | bounded controlled capture, local transport tests, fixture validation, local and hosted verification |
 | 4 | Replay engine | COMPLETE | exact canonical matching, integrity-gated loading, deterministic errors, concurrent-read verification, local and hosted verification |
 | 5 | Local replay server | COMPLETE | loopback HTTP JSON-RPC transport, malformed-input/error handling, concurrency, clean shutdown, local and hosted verification |
-| 6 | CLI integration | NOT_STARTED | end-to-end local workflow |
+| 6 | CLI integration | COMPLETE | five-command workflow, stable exit codes, end-to-end offline tests, local and hosted verification |
 | 7 | Deterministic test workflow | NOT_STARTED | network-free example test |
 | 8 | Security and sanitization hardening | NOT_STARTED | threat cases and review |
 | 9 | Documentation and developer experience | NOT_STARTED | truthful walkthrough |
@@ -97,7 +97,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** expose a coherent developer workflow. **Dependencies:** Phases 3–5. **Scope:** `record`, `inspect`, `validate`, `replay`, `serve`; stable exit codes; useful errors; stdin/file options where documented. **Non-scope:** extra commands, shell completion, public SDK.
 
-**Tests:** command parsing, end-to-end fixture workflow, clean exit codes, output paths, no-network replay. **Acceptance:** README walkthrough uses real commands/output; no placeholder command remains. **Commands:** `go build ./cmd/stellar-replay`; `go test ./...`; `go vet ./...`; `git diff --check`. **Artifacts:** binary entry point and CLI tests. **Risks/recovery:** CLI surface churn; preserve backwards-compatible flags after v0.1 freeze or document break. **Network:** record opt-in only. **Review:** UX review optional.
+**Tests:** command parsing, end-to-end fixture workflow, clean exit codes, output paths, request-file replay, binary help, and no-network replay. **Acceptance:** README walkthrough uses real commands/output; no placeholder command remains. **Commands:** `go build ./cmd/stellar-replay`; `go test ./...`; `go vet ./...`; `git diff --check`. **Artifacts:** binary entry point, CLI package/tests, and executable workflow documentation. **Risks/recovery:** CLI surface churn; preserve backwards-compatible flags after v0.1 freeze or document break. **Network:** record opt-in only. **Review:** UX review optional. **Status:** COMPLETE; evidence is in `PHASE_6_REPORT.md`.
 
 ### Phase 7 — Deterministic test workflow
 

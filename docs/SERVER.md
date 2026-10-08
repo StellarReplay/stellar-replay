@@ -2,8 +2,8 @@
 
 Phase 5 implements `internal/server`, a loopback-only HTTP JSON-RPC boundary over
 the Phase 4 replay engine. It is intended to let existing Stellar RPC clients
-point at a local fixture-backed endpoint. The CLI command that will manage this
-server is Phase 6 work.
+point at a local fixture-backed endpoint. The Phase 6 `serve` command manages its
+listener lifecycle.
 
 ## Boundary
 

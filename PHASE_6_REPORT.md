@@ -65,6 +65,14 @@ checked-in examples, and broader workflow proof remain later phases.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 7 deterministic test workflow remains
-`NOT_STARTED`; no Phase 7 work is included here.
+The implementation commit was pushed to the public `StellarReplay/stellar-replay`
+repository on `main`:
+
+- implementation commit: `e622ff521004ce23477ca83f1468981dfcc54336`
+- implementation commit URL: <https://github.com/StellarReplay/stellar-replay/commit/e622ff521004ce23477ca83f1468981dfcc54336>
+- hosted CI run: <https://github.com/StellarReplay/stellar-replay/actions/runs/37724646177>
+- hosted CI result: `success`
+
+This report checkpoint is committed separately after hosted verification so the
+remote report contains the evidence above. Phase 7 deterministic test workflow
+remains `NOT_STARTED`; no Phase 7 work is included here.

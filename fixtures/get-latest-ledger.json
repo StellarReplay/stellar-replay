@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "1",
+  "capturedAt": "2026-10-08T12:00:00Z",
+  "provenance": {
+    "endpoint": "https://soroban-testnet.stellar.org",
+    "network": "testnet",
+    "toolVersion": "stellar-replay/phase7-example"
+  },
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "getLatestLedger",
+    "params": {}
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "id": "0000000000000000000000000000000000000000000000000000000000000000",
+      "protocolVersion": 22,
+      "sequence": 123456,
+      "closeTime": "2026-10-08T12:00:00Z",
+      "headerXdr": "AA==",
+      "metadataXdr": "AA=="
+    }
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "sha256": "28d1e92ff89c251968279db38ddf53f26353750452cee6241abb1d4f7fd036db"
+  }
+}

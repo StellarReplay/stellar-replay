@@ -38,7 +38,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 4 | Replay engine | COMPLETE | exact canonical matching, integrity-gated loading, deterministic errors, concurrent-read verification, local and hosted verification |
 | 5 | Local replay server | COMPLETE | loopback HTTP JSON-RPC transport, malformed-input/error handling, concurrency, clean shutdown, local and hosted verification |
 | 6 | CLI integration | COMPLETE | five-command workflow, stable exit codes, end-to-end offline tests, local and hosted verification |
-| 7 | Deterministic test workflow | NOT_STARTED | network-free example test |
+| 7 | Deterministic test workflow | COMPLETE | checked-in sanitized fixture matrix, loopback-only offline example, repeated/concurrent proof, local and hosted verification |
 | 8 | Security and sanitization hardening | NOT_STARTED | threat cases and review |
 | 9 | Documentation and developer experience | NOT_STARTED | truthful walkthrough |
 | 10 | CI and cross-platform release | NOT_STARTED | matrix and artifacts |
@@ -103,7 +103,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** prove the product value in a normal test suite. **Dependencies:** Phase 6. **Scope:** checked-in safe fixtures, test helper or documented HTTP usage, offline integration example. **Non-scope:** live network in default tests, SDK-specific packages.
 
-**Tests:** repeated offline run, network-disabled test, fixture matrix, concurrent clients. **Acceptance:** a new contributor can run tests without credentials/network and see the replay path. **Commands:** `go test ./...`; platform-equivalent test command; optionally block network in test harness. **Artifacts:** `fixtures/`, `examples/`, `tests/`. **Risks/recovery:** fixtures accidentally encode secrets; sanitize and rotate/remove them. **Network:** none for default checks. **Review:** not required.
+**Tests:** repeated offline run, network-disabled transport guard, fixture matrix, concurrent clients. **Acceptance:** a new contributor can run tests without credentials/network and see the replay path. **Commands:** `go test ./...`; platform-equivalent test command; optionally block network in test harness. **Artifacts:** sanitized `fixtures/`, `examples/` integration test, and `tests/` guidance. **Risks/recovery:** fixtures accidentally encode secrets; sanitize and rotate/remove them. **Network:** none for default checks. **Review:** not required. **Status:** COMPLETE; evidence is in `PHASE_7_REPORT.md`.
 
 ### Phase 8 — Security and sanitization hardening
 

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "1",
+  "capturedAt": "2026-10-08T12:00:00Z",
+  "provenance": {
+    "endpoint": "https://soroban-testnet.stellar.org",
+    "network": "testnet",
+    "toolVersion": "stellar-replay/phase7-example"
+  },
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "getHealth",
+    "params": {}
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "status": "healthy",
+      "latestLedger": 123456
+    }
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "sha256": "8be34abe26e4e592996e37b470981e49f863fb2be40a3ffb71b4866f5a8cbaef"
+  }
+}

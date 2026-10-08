@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1",
+  "capturedAt": "2026-10-08T12:00:00Z",
+  "provenance": {
+    "endpoint": "https://soroban-testnet.stellar.org",
+    "network": "testnet",
+    "toolVersion": "stellar-replay/phase7-example"
+  },
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "getNetwork",
+    "params": {}
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "passphrase": "Test SDF Network ; September 2015",
+      "protocolVersion": 22,
+      "friendbotUrl": "https://friendbot.testnet.stellar.org/"
+    }
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "sha256": "032471d111a960cd810cf149e7c534f4ed51206a734d01216151df34114965bd"
+  }
+}

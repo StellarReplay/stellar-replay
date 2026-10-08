@@ -42,6 +42,12 @@ until interrupted and exposes the fixture at `http://127.0.0.1:8787/`. See the
 [replay contract](docs/REPLAY.md), and [server contract](docs/SERVER.md) for
 limits and exact behavior.
 
+The default integration proof is also runnable without credentials or network:
+
+```text
+go test ./examples -run TestOfflineReplayWorkflow -count=1
+```
+
 ## Intended walkthrough
 
 ```text

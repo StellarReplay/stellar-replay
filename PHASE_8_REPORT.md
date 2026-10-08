@@ -61,6 +61,17 @@ An independent security review remains strongly justified before release.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 9 documentation and developer experience
-remains `NOT_STARTED`; no Phase 9 work is included here.
+The implementation commit was pushed to the public `StellarReplay/stellar-replay`
+repository on `main`:
+
+- implementation commit: `b2264a6214c2c57da8b25ae1656e9698ed11d9a1`
+- implementation commit URL: <https://github.com/StellarReplay/stellar-replay/commit/b2264a6214c2c57da8b25ae1656e9698ed11d9a1>
+- hosted CI run: <https://github.com/StellarReplay/stellar-replay/actions/runs/37726057573>
+- hosted CI result: `success`
+
+`govulncheck` was not installed in the execution environment; this is recorded as
+a tooling limitation, not treated as a successful vulnerability scan.
+
+This report checkpoint is committed separately after hosted verification so the
+remote report contains the evidence above. Phase 9 documentation and developer
+experience remains `NOT_STARTED`; no Phase 9 work is included here.

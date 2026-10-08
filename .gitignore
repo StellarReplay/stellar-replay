@@ -1,0 +1,12 @@
+bin/
+dist/
+*.test
+*.out
+coverage.out
+.stellar-replay/
+.vscode/
+.idea/
+*.swp
+Thumbs.db
+.DS_Store
+

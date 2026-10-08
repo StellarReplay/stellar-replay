@@ -1,0 +1,53 @@
+# Stellar Replay
+
+Stellar Replay is a planned Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
+
+> Status: repository foundation only. No CLI, recorder, fixture validator, or replay server is implemented yet.
+
+## Why
+
+Tests that call a live Stellar RPC endpoint inherit network failures, provider drift, rate limits, retention windows, and changing chain state. Stellar Replay will let a developer record a controlled interaction once, review what was captured, and run the same test offline against a local replay server.
+
+```mermaid
+flowchart LR
+  A[Live Stellar RPC] --> B[Controlled request]
+  B --> C[Versioned fixture]
+  C --> D[Validation + hash]
+  D --> E[Local replay server]
+  E --> F[Deterministic test]
+```
+
+## v0.1 promise
+
+Planned commands are `record`, `inspect`, `validate`, `replay`, and `serve`. v0.1 will support read-only `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerEntries`. It will not submit transactions, simulate transactions, execute contract code, or silently contact a live network during replay.
+
+This README describes the frozen plan; it does not claim those commands work today. See [ROADMAP.md](ROADMAP.md) and [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+
+## Intended walkthrough
+
+```text
+stellar-replay record --rpc-url https://soroban-testnet.stellar.org \
+  --method getLatestLedger --params '{}'
+stellar-replay inspect fixtures/latest-ledger.json
+stellar-replay validate fixtures/latest-ledger.json
+stellar-replay serve fixtures/latest-ledger.json --listen 127.0.0.1:8787
+```
+
+The exact flags and output are implementation work and must not be inferred from this sketch. The eventual demo is specified in [docs/DEMO.md](docs/DEMO.md).
+
+## Fixture philosophy
+
+A fixture is a captured RPC interaction, not blockchain truth. It records request parameters, response or JSON-RPC error, network identity, provenance, schema version, and integrity information. A hash detects file modification; it does not prove that the endpoint was truthful or that the captured state remains current.
+
+## Installation and contribution
+
+No release exists yet. The chosen distribution is a statically linked Go binary for Windows, Linux, and macOS. Read [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), and the current phase in [ROADMAP.md](ROADMAP.md) before implementation.
+
+## Security
+
+The product is read-only by default. It must never require or capture secret keys, seed phrases, signing material, or authentication secrets. See [SECURITY.md](SECURITY.md) for reporting and [docs/SECURITY.md](docs/SECURITY.md) for the product threat model.
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE).
+

@@ -56,6 +56,14 @@ must be sanitized, validated, integrity-sealed, and reviewed for publish safety.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 8 security and sanitization hardening
-remains `NOT_STARTED`; no Phase 8 work is included here.
+The implementation commit was pushed to the public `StellarReplay/stellar-replay`
+repository on `main`:
+
+- implementation commit: `48435474c3ab680c4acc990db637c674dcd3ff2f`
+- implementation commit URL: <https://github.com/StellarReplay/stellar-replay/commit/48435474c3ab680c4acc990db637c674dcd3ff2f>
+- hosted CI run: <https://github.com/StellarReplay/stellar-replay/actions/runs/37725351093>
+- hosted CI result: `success`
+
+This report checkpoint is committed separately after hosted verification so the
+remote report contains the evidence above. Phase 8 security and sanitization
+hardening remains `NOT_STARTED`; no Phase 8 work is included here.

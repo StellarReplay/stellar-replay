@@ -19,7 +19,7 @@ flowchart LR
 
 ## v0.1 promise
 
-Planned commands are `record`, `inspect`, `validate`, `replay`, and `serve`. v0.1 will support read-only `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerEntries`. It will not submit transactions, simulate transactions, execute contract code, or silently contact a live network during replay.
+Planned commands are `record`, `inspect`, `validate`, `replay`, and `serve`. v0.1 will support read-only `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerEntries`. It will not submit transactions, simulate transactions, execute contract code, or silently contact a live network during replay. The frozen request and endpoint policy is recorded in [docs/PHASE_1_DECISION.md](docs/PHASE_1_DECISION.md).
 
 This README describes the frozen plan; it does not claim those commands work today. See [ROADMAP.md](ROADMAP.md) and [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 

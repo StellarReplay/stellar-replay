@@ -73,5 +73,5 @@ Local code and documentation are not the whole phase. A completed phase must hav
 
 ## Current phase
 
-Phase 0, repository and project constitution plus initial GitHub topology: `COMPLETE`. The core, Action, and docs repositories are public under `StellarReplay`, their `main` branches are synchronized, and their foundation workflows pass. Phase 1 remains `NOT_STARTED`; no product core implementation is authorized by this repository-topology task.
+Phase 0, repository and project constitution plus initial GitHub topology: `COMPLETE`. Phase 1 research and MVP freeze: `COMPLETE`; evidence is in `docs/PHASE_1_DECISION.md` and `PHASE_1_REPORT.md`. Phase 2 is next and remains `NOT_STARTED`. No product core implementation was authorized during Phase 1.
 

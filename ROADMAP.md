@@ -32,7 +32,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | Phase | Name | Status | Gate |
 |---:|---|---|---|
 | 0 | Constitution and repository foundation | COMPLETE | three repositories synchronized; core, Action, and docs foundation workflows pass |
-| 1 | Research and MVP freeze | NOT_STARTED | cited research + decision record |
+| 1 | Research and MVP freeze | COMPLETE | decision record, protocol/network policy, local checks, and hosted verification |
 | 2 | Fixture schema and validation | NOT_STARTED | valid/invalid fixture tests |
 | 3 | Capture | NOT_STARTED | controlled live capture + offline tests |
 | 4 | Replay engine | NOT_STARTED | exact matching tests |
@@ -65,9 +65,9 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 ### Phase 1 — Research and MVP freeze
 
-**Objective/why:** validate assumptions before code. **Dependencies:** Phase 0. **Scope:** confirm current RPC semantics, JSON-RPC error/id behavior, SDK endpoint configurability, and method-specific parameter considerations; decide redirect/private endpoint policy. **Non-scope:** implementation or broad ecosystem survey.
+**Objective/why:** validate assumptions before code. **Dependencies:** Phase 0. **Scope:** confirm current RPC semantics, JSON-RPC error/id behavior, SDK endpoint configurability, and method-specific parameter considerations; decide redirect/private endpoint policy. **Non-scope:** implementation or broad ecosystem survey. **Status:** COMPLETE; evidence is in `docs/PHASE_1_DECISION.md` and `PHASE_1_REPORT.md`.
 
-**Tasks:** update landscape/protocol; write decision record; freeze fixture fields and exact method list. **Tests:** document examples and negative cases; no live network required except opt-in research. **Acceptance:** each supported method has request shape, response policy, matching policy, and limitation; network policy is approved in docs. **Commands:** `rg -n "supported|unsupported|redirect|private|fixture" docs README.md`; `git diff --check`. **Artifacts:** decision record and revised docs. **Risks:** protocol drift; record source URLs/date and preserve raw responses. **Recovery:** amend docs before schema work. **Review:** architecture review justified if method/transport policy changes.
+**Tasks:** update landscape/protocol; write `docs/PHASE_1_DECISION.md`; freeze fixture fields and exact method list; define zero-parameter normalization, id handling, error mapping, endpoint restrictions, redirect behavior, proxy behavior, and local-test transport policy. **Tests:** document examples and negative cases; no live network required except opt-in research. **Acceptance:** each supported method has request shape, response policy, matching policy, and limitation; network policy is approved in docs; the official JSON-RPC and SDK sources are recorded with a research date; no implementation starts. **Commands:** `rg -n "supported|unsupported|redirect|private|fixture|proxy|params|request id" docs README.md`; `git diff --check`; `go test ./...`; `go vet ./...`. **Artifacts:** decision record and revised docs. **Risks:** protocol drift; record source URLs/date and preserve raw responses. **Recovery:** amend docs before schema work. **Review:** architecture review is justified if method/transport policy changes; no independent security review is required before implementation because the policy is deliberately restrictive.
 
 ### Phase 2 — Fixture schema and validation
 

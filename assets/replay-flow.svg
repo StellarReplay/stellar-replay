@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="260" viewBox="0 0 1100 260" role="img" aria-labelledby="title desc">
+  <title id="title">Stellar Replay deterministic workflow</title>
+  <desc id="desc">A controlled live RPC request becomes a validated fixture and is replayed locally for deterministic tests.</desc>
+  <defs>
+    <linearGradient id="line" x1="0" x2="1"><stop stop-color="#5BE7C4"/><stop offset="1" stop-color="#4F8CFF"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0 0l10 3-10 3z" fill="#4F8CFF"/></marker>
+  </defs>
+  <rect width="1100" height="260" rx="20" fill="#0B1220"/>
+  <text x="50" y="48" fill="#F5FBFF" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Deterministic Stellar RPC testing</text>
+  <text x="50" y="76" fill="#A9BDD4" font-family="Arial, Helvetica, sans-serif" font-size="15">Capture once with explicit network access. Replay indefinitely with no live fallback.</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <g transform="translate(50 118)"><rect width="160" height="84" rx="14" fill="#11233C" stroke="#4F8CFF"/><text x="80" y="35" fill="#F5FBFF" text-anchor="middle" font-size="16" font-weight="700">Live Stellar RPC</text><text x="80" y="58" fill="#A9BDD4" text-anchor="middle" font-size="13">explicit record only</text></g>
+    <g transform="translate(280 118)"><rect width="160" height="84" rx="14" fill="#112E38" stroke="#5BE7C4"/><text x="80" y="35" fill="#F5FBFF" text-anchor="middle" font-size="16" font-weight="700">Versioned fixture</text><text x="80" y="58" fill="#A9BDD4" text-anchor="middle" font-size="13">inspectable JSON</text></g>
+    <g transform="translate(510 118)"><rect width="160" height="84" rx="14" fill="#162846" stroke="#74A9FF"/><text x="80" y="35" fill="#F5FBFF" text-anchor="middle" font-size="16" font-weight="700">Validate + hash</text><text x="80" y="58" fill="#A9BDD4" text-anchor="middle" font-size="13">integrity-gated</text></g>
+    <g transform="translate(740 118)"><rect width="160" height="84" rx="14" fill="#112E38" stroke="#5BE7C4"/><text x="80" y="35" fill="#F5FBFF" text-anchor="middle" font-size="16" font-weight="700">Local replay</text><text x="80" y="58" fill="#A9BDD4" text-anchor="middle" font-size="13">loopback server</text></g>
+    <g transform="translate(970 118)"><rect width="90" height="84" rx="14" fill="#11233C" stroke="#4F8CFF"/><text x="45" y="35" fill="#F5FBFF" text-anchor="middle" font-size="16" font-weight="700">Tests</text><text x="45" y="58" fill="#A9BDD4" text-anchor="middle" font-size="13">offline</text></g>
+  </g>
+  <path d="M210 160h70m160 0h70m160 0h70m160 0h70" stroke="url(#line)" stroke-width="4" marker-end="url(#arrow)"/>
+</svg>

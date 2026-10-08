@@ -1,21 +1,40 @@
-# Stellar Replay
+<p align="center">
+  <img src="assets/stellar-replay-mark.svg" alt="Stellar Replay" width="320" />
+</p>
 
-Stellar Replay is a Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
+<p align="center"><strong>Deterministic capture and replay for Stellar/Soroban RPC tests.</strong></p>
 
-> Status: v0.1.0 is released. The core fixture, capture, replay, local server, and CLI workflow is implemented and verified; the companion Action and extended-docs repositories remain pre-release.
+<p align="center">
+  Capture a controlled read-only RPC interaction once, review its fixture, and replay it locally without live-network fallback.
+</p>
 
-## Why
+<p align="center">
+  <a href="https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0"><img src="https://img.shields.io/github/v/release/StellarReplay/stellar-replay?display_name=tag&sort=semver" alt="Latest release" /></a>
+  <a href="https://github.com/StellarReplay/stellar-replay/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/StellarReplay/stellar-replay/ci.yml/CI?branch=main&label=CI" alt="CI status" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-4F8CFF" alt="Apache-2.0 license" /></a>
+  <img src="https://img.shields.io/badge/Stellar%20%2F%20Soroban-RPC-5BE7C4" alt="Stellar and Soroban RPC" />
+</p>
 
-Tests that call a live Stellar RPC endpoint inherit network failures, provider drift, rate limits, retention windows, and changing chain state. Stellar Replay will let a developer record a controlled interaction once, review what was captured, and run the same test offline against a local replay server.
+<p align="center">
+  <a href="#quickstart">Quick start</a> ·
+  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
+  <a href="docs/COMMANDS.md">Commands</a> ·
+  <a href="docs/RELEASES.md">Releases</a> ·
+  <a href="CONTRIBUTING.md">Contributing</a>
+</p>
 
-```mermaid
-flowchart LR
-  A[Live Stellar RPC] --> B[Controlled request]
-  B --> C[Versioned fixture]
-  C --> D[Validation + hash]
-  D --> E[Local replay server]
-  E --> F[Deterministic test]
-```
+> **Released:** v0.1.0. The core fixture, capture, replay, local server, and CLI workflow is implemented and verified. The companion Action and extended-docs repositories remain pre-release.
+
+## What problem does this solve?
+
+Tests that call a live Stellar RPC endpoint inherit provider drift, rate limits,
+network failures, retention windows, and changing chain state. Stellar Replay
+replaces that uncertainty with a versioned, validated fixture and a local replay
+server.
+
+<p align="center">
+  <img src="assets/replay-flow.svg" alt="Live Stellar RPC becomes a validated fixture and an offline deterministic test" width="100%" />
+</p>
 
 ## v0.1 promise
 
@@ -73,4 +92,3 @@ The product is read-only by default. It must never require or capture secret key
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
-

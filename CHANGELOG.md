@@ -19,4 +19,5 @@
 - Completed Phase 9 documentation and developer experience with an executable offline demo, command/method/troubleshooting guides, contributor workflow, and automated documentation drift checks.
 - Completed Phase 10 CI and cross-platform release foundation with Windows/Linux/macOS verification, reproducible tagged release packaging, archive smoke tests, embedded release versions, checksum generation, least-privilege workflow permissions, and release installation guidance.
 - Completed Phase 11 final audit with resolved documentation/CI drift, explicit accepted limitations, release conditions, and a conditional GO decision for Phase 12.
+- Published v0.1.0 with Linux amd64, Windows amd64, and macOS amd64 archives plus independently verified SHA-256 checksums and post-release smoke tests.
 

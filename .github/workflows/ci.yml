@@ -21,8 +21,13 @@ jobs:
         with:
           go-version-file: go.mod
       - name: Check formatting
+        if: runner.os != 'Windows'
         shell: bash
         run: test -z "$(gofmt -l $(git ls-files '*.go'))"
+      - name: Check formatting coverage
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Write-Output "gofmt is enforced by the Linux and macOS matrix runners; Windows continues with build, test, vet, smoke, and clean-tree checks."
       - name: Test Go packages
         run: go test ./...
       - name: Vet Go packages

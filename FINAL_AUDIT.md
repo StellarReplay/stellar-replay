@@ -73,9 +73,12 @@ The release smoke test passed for a versioned Windows archive:
     embedded version: 0.1.0-rc.0
     SHA256: 0C51BD2F52DFA56B5AE40B715EC39687489A20490134887D5279E1AE5EAFA529
 
-Phase 10’s hosted Linux, Windows, and macOS matrix passed before this audit.
-The final audit checkpoint’s hosted verification is recorded below once its
-workflow completes.
+The final audit implementation checkpoint is commit
+[`98abc6d1fd2ae073ccf13693a8bd5c560f60f746`](https://github.com/StellarReplay/stellar-replay/commit/98abc6d1fd2ae073ccf13693a8bd5c560f60f746).
+Its hosted Linux, Windows, and macOS matrix passed in
+[GitHub Actions run 37774509666](https://github.com/StellarReplay/stellar-replay/actions/runs/37774509666).
+The only annotations were routine runner-capacity and future Ubuntu-label
+migration notices; no verification step failed.
 
 ## Phase 12 release conditions
 

@@ -62,6 +62,7 @@ benefit from human review.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 10 CI and cross-platform release remains
-`NOT_STARTED`; no Phase 10 work is included here.
+- Implementation commit: [`230c544a60225199433f7abe1a4a483ab313d8ba`](https://github.com/StellarReplay/stellar-replay/commit/230c544a60225199433f7abe1a4a483ab313d8ba)
+- Hosted GitHub Actions verification: [run 37771423416](https://github.com/StellarReplay/stellar-replay/actions/runs/37771423416) — `success`.
+- This report is the final Phase 9 checkpoint and is pushed to `StellarReplay/stellar-replay` on `main` after the implementation verification passed.
+- Phase 10 CI and cross-platform release remains `NOT_STARTED`; no Phase 10 work is included here.

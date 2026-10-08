@@ -164,6 +164,32 @@ func TestCaptureEndpointPolicy(t *testing.T) {
 	}
 }
 
+func TestCaptureRejectsOversizedRequestBeforeTransport(t *testing.T) {
+	var calls atomic.Int32
+	cfg := testConfigWithTransport(roundTripFunc(func(*http.Request) (*http.Response, error) {
+		calls.Add(1)
+		return nil, errors.New("unexpected network call")
+	}), "getHealth", json.RawMessage(`{"padding":"`+strings.Repeat("x", 64)+`"}`))
+	cfg.MaxRequestBytes = 32
+	if _, err := Capture(context.Background(), cfg); err == nil || !strings.Contains(err.Error(), "request exceeds") || calls.Load() != 0 {
+		t.Fatalf("oversized request was not rejected before transport: err=%v calls=%d", err, calls.Load())
+	}
+}
+
+func TestCaptureDefaultSanitizationRedactsResponseSecrets(t *testing.T) {
+	transport := roundTripFunc(func(r *http.Request) (*http.Response, error) {
+		return jsonResponse(r, http.StatusOK, `{"jsonrpc":"2.0","id":1,"result":{"api_key":"secret","value":"safe"}}`), nil
+	})
+	cfg := testConfigWithTransport(transport, "getHealth", nil)
+	captured, err := Capture(context.Background(), cfg)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if strings.Contains(string(captured.Response.Result), "secret") || !strings.Contains(string(captured.Response.Result), "[REDACTED]") {
+		t.Fatalf("response secret was stored: %s", captured.Response.Result)
+	}
+}
+
 type roundTripFunc func(*http.Request) (*http.Response, error)
 
 func (fn roundTripFunc) RoundTrip(r *http.Request) (*http.Response, error) { return fn(r) }

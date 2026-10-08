@@ -17,10 +17,12 @@ import (
 	"time"
 
 	"github.com/stellar-replay/stellar-replay/internal/fixture"
+	"github.com/stellar-replay/stellar-replay/internal/sanitize"
 )
 
 const (
 	DefaultTimeout          = 30 * time.Second
+	DefaultMaxRequestBytes  = fixture.MaxFixtureBytes
 	DefaultMaxResponseBytes = fixture.MaxFixtureBytes
 )
 
@@ -39,6 +41,7 @@ type Config struct {
 	Params           json.RawMessage
 	Timeout          time.Duration
 	MaxResponseBytes int64
+	MaxRequestBytes  int64
 
 	// Transport is intended for tests and controlled callers. When nil, capture
 	// uses a transport with no proxy and private-destination protection.
@@ -86,6 +89,13 @@ func Capture(ctx context.Context, cfg Config) (fixture.Fixture, error) {
 	if maxBytes <= 0 || maxBytes > fixture.MaxFixtureBytes {
 		return captured, fmt.Errorf("max response bytes must be between 1 and %d", fixture.MaxFixtureBytes)
 	}
+	maxRequestBytes := cfg.MaxRequestBytes
+	if maxRequestBytes == 0 {
+		maxRequestBytes = DefaultMaxRequestBytes
+	}
+	if maxRequestBytes <= 0 || maxRequestBytes > fixture.MaxFixtureBytes {
+		return captured, fmt.Errorf("max request bytes must be between 1 and %d", fixture.MaxFixtureBytes)
+	}
 	now := cfg.Now
 	if now == nil {
 		now = time.Now
@@ -101,6 +111,9 @@ func Capture(ctx context.Context, cfg Config) (fixture.Fixture, error) {
 	body, err := json.Marshal(payload)
 	if err != nil {
 		return captured, fmt.Errorf("marshal request: %w", err)
+	}
+	if int64(len(body)) > maxRequestBytes {
+		return captured, fmt.Errorf("RPC request exceeds %d bytes", maxRequestBytes)
 	}
 
 	requestCtx, cancel := context.WithTimeout(ctx, timeout)
@@ -146,6 +159,9 @@ func Capture(ctx context.Context, cfg Config) (fixture.Fixture, error) {
 	}
 	if err := ensureEOF(decoder); err != nil {
 		return captured, err
+	}
+	if err := sanitize.Response(&rpcResponse); err != nil {
+		return captured, fmt.Errorf("sanitize response: %w", err)
 	}
 	if cfg.Sanitize != nil {
 		if err := cfg.Sanitize(&rpcResponse); err != nil {
@@ -206,11 +222,24 @@ func validateEndpoint(raw string) (*url.URL, error) {
 		return nil, errors.New("endpoint must not target a private, loopback, or link-local address")
 	}
 	for key := range u.Query() {
-		if strings.Contains(strings.ToLower(strings.NewReplacer("_", "", "-", "").Replace(key)), "token") || strings.Contains(strings.ToLower(key), "secret") {
+		if sensitiveQueryKey(key) {
 			return nil, fmt.Errorf("endpoint contains sensitive query field %q", key)
 		}
 	}
 	return u, nil
+}
+
+func sensitiveQueryKey(key string) bool {
+	normalized := strings.ToLower(strings.NewReplacer("_", "", "-", "", " ", "").Replace(key))
+	for _, prohibited := range []string{
+		"privatekey", "secret", "seedphrase", "mnemonic", "password", "authorization",
+		"accesstoken", "refreshtoken", "apikey", "bearer", "signingkey",
+	} {
+		if strings.Contains(normalized, prohibited) {
+			return true
+		}
+	}
+	return false
 }
 
 func secureTransport() http.RoundTripper {

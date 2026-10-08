@@ -39,7 +39,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 5 | Local replay server | COMPLETE | loopback HTTP JSON-RPC transport, malformed-input/error handling, concurrency, clean shutdown, local and hosted verification |
 | 6 | CLI integration | COMPLETE | five-command workflow, stable exit codes, end-to-end offline tests, local and hosted verification |
 | 7 | Deterministic test workflow | COMPLETE | checked-in sanitized fixture matrix, loopback-only offline example, repeated/concurrent proof, local and hosted verification |
-| 8 | Security and sanitization hardening | NOT_STARTED | threat cases and review |
+| 8 | Security and sanitization hardening | COMPLETE | adversarial controls, default redaction, security checklist, local and hosted verification |
 | 9 | Documentation and developer experience | NOT_STARTED | truthful walkthrough |
 | 10 | CI and cross-platform release | NOT_STARTED | matrix and artifacts |
 | 11 | Release candidate and final audit | NOT_STARTED | audit report and go/no-go |
@@ -109,7 +109,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** validate trust boundaries before release. **Dependencies:** Phases 3–7. **Scope:** secret detection/redaction, bounded input, URL policy, logs, file permissions, path handling, fixture sharing guidance. **Non-scope:** cryptographic chain proofs or transaction security.
 
-**Tests:** secret-like fields, oversized body, malformed fixture, path traversal, private endpoint policy, logs, concurrent access. **Acceptance:** threat model matches code; no secret is written in tests; limitations are explicit. **Commands:** `go test ./...`; `go vet ./...`; selected static/security tools documented. **Artifacts:** updated docs, adversarial tests, security checklist. **Risks/recovery:** over-redaction breaks replay; fail closed and document explicit opt-out only if safe. **Network:** local adversarial tests; no live network required. **Review:** independent security review strongly justified.
+**Tests:** secret-like fields and values, oversized request/response/fixture bodies, malformed fixture/response, path/output handling, private endpoint policy, diagnostic/log safety, concurrent access, and no-network replay. **Acceptance:** threat model matches code; no secret is written in tests; limitations are explicit. **Commands:** `go test ./...`; `go vet ./...`; selected static/security tools documented. **Artifacts:** updated docs, adversarial tests, default redaction, and security checklist. **Risks/recovery:** over-redaction breaks replay; fail closed and document explicit opt-out only if safe. **Network:** local adversarial tests; no live network required. **Review:** independent security review strongly justified. **Status:** COMPLETE; evidence is in `PHASE_8_REPORT.md`.
 
 ### Phase 9 — Documentation and developer experience
 

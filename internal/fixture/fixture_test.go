@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 )
@@ -156,5 +157,37 @@ func TestZeroParameterMethodsAcceptOmittedAndEmptyParams(t *testing.T) {
 		if err := validateStructure(f); err != nil {
 			t.Fatalf("params %s: %v", params, err)
 		}
+	}
+}
+
+func TestSaveCreatesNestedPrivateFixtureAndLoadRejectsOversizedFile(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "nested", "fixture.json")
+	if err := Save(path, validFixture(`{"keys":["AQIDBA=="]}`)); err != nil {
+		t.Fatal(err)
+	}
+	loaded, err := Load(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if loaded.Integrity == nil {
+		t.Fatal("loaded fixture has no integrity")
+	}
+	if runtime.GOOS != "windows" {
+		info, err := os.Stat(path)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if info.Mode().Perm() != 0o600 {
+			t.Fatalf("fixture permissions are %o, want 600", info.Mode().Perm())
+		}
+	}
+
+	oversized := filepath.Join(dir, "oversized.json")
+	if err := os.WriteFile(oversized, make([]byte, MaxFixtureBytes+1), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Load(oversized); err == nil || !strings.Contains(err.Error(), "exceeds") {
+		t.Fatalf("oversized fixture was accepted: %v", err)
 	}
 }

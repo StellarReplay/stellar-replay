@@ -35,6 +35,8 @@ sequenceDiagram
 - `internal/capture`: one-shot bounded HTTPS client, endpoint policy,
   request/response capture, and the response sanitization hook. See
   [`CAPTURE.md`](CAPTURE.md).
+- `internal/sanitize`: conservative default response redaction for sensitive
+  keys and obvious secret material. See [`SECURITY_CHECKLIST.md`](SECURITY_CHECKLIST.md).
 - `internal/fixture`: versioned schema, canonical JSON, validation, SHA-256, and
   bounded atomic storage. The contract is documented in
   [`FIXTURE_SCHEMA.md`](FIXTURE_SCHEMA.md).

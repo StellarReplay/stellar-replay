@@ -11,4 +11,5 @@
 - Implemented Phase 5 loopback local replay server with bounded HTTP JSON-RPC transport, malformed/batch/error handling, concurrency tests, and clean shutdown.
 - Implemented Phase 6 CLI commands for record, inspect, validate, replay, and serve with stable exit codes, file inputs, offline workflow tests, and executable documentation.
 - Added Phase 7 sanitized fixture matrix and a loopback-only offline integration example covering repeated and concurrent deterministic replay.
+- Hardened Phase 8 secret handling, request/response bounds, endpoint query policy, fixture permissions, and adversarial security coverage with a documented checklist.
 

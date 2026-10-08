@@ -41,7 +41,8 @@ sequenceDiagram
 - `internal/replay`: validated fixture indexing, exact canonical method/params
   matching, safe diagnostics, ID echoing, and repeatable concurrent response
   selection. See [`REPLAY.md`](REPLAY.md).
-- `internal/server`: HTTP transport, malformed-input handling, concurrency, shutdown.
+- `internal/server`: loopback HTTP JSON-RPC transport, malformed-input handling,
+  concurrency, bounded bodies, and clean shutdown. See [`SERVER.md`](SERVER.md).
 - `internal/cli`: command parsing and user-facing errors.
 - `cmd/stellar-replay`: minimal executable entry point.
 

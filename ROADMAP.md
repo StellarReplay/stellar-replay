@@ -36,7 +36,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 2 | Fixture schema and validation | COMPLETE | versioned schema, deterministic integrity, strict validation, atomic storage, local and hosted verification |
 | 3 | Capture | COMPLETE | bounded controlled capture, local transport tests, fixture validation, local and hosted verification |
 | 4 | Replay engine | COMPLETE | exact canonical matching, integrity-gated loading, deterministic errors, concurrent-read verification, local and hosted verification |
-| 5 | Local replay server | NOT_STARTED | HTTP/concurrency/shutdown tests |
+| 5 | Local replay server | COMPLETE | loopback HTTP JSON-RPC transport, malformed-input/error handling, concurrency, clean shutdown, local and hosted verification |
 | 6 | CLI integration | NOT_STARTED | end-to-end local workflow |
 | 7 | Deterministic test workflow | NOT_STARTED | network-free example test |
 | 8 | Security and sanitization hardening | NOT_STARTED | threat cases and review |
@@ -91,7 +91,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** let existing clients point at a local endpoint. **Dependencies:** Phases 2 and 4. **Scope:** HTTP JSON-RPC transport, malformed JSON, errors, concurrent requests, clean shutdown, loopback defaults. **Non-scope:** live fallback, batch unless specified, TLS termination.
 
-**Tests:** startup, shutdown, invalid JSON, unsupported method, mismatch, concurrent requests, no-network assertion. **Acceptance:** server rejects invalid/unmatched input clearly and serves only validated fixtures; shutdown releases the listener. **Commands:** `go test ./internal/server ./internal/replay`; `go test -race ./...`; `go vet ./...`. **Artifacts:** server package and integration tests. **Risks/recovery:** HTTP behavior differs from SDK expectations; add a fixture-backed compatibility test and document gaps. **Network:** local only. **Review:** concurrency review justified.
+**Tests:** startup, shutdown, invalid JSON, unsupported method, mismatch, malformed/batch input, transport misuse, bounded body, concurrent requests, loopback configuration, and no-network assertion. **Acceptance:** server rejects invalid/unmatched input clearly and serves only validated fixtures; shutdown releases the listener. **Commands:** `go test ./internal/server ./internal/replay`; `go test -race ./...`; `go vet ./...`. **Artifacts:** server package, tests, and `docs/SERVER.md`. **Risks/recovery:** HTTP behavior differs from SDK expectations; fixture-backed compatibility tests and documented gaps are required. **Network:** local only. **Review:** concurrency review justified. **Status:** COMPLETE; evidence is in `PHASE_5_REPORT.md`.
 
 ### Phase 6 — CLI integration
 

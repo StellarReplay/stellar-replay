@@ -34,7 +34,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 0 | Constitution and repository foundation | COMPLETE | three repositories synchronized; core, Action, and docs foundation workflows pass |
 | 1 | Research and MVP freeze | COMPLETE | decision record, protocol/network policy, local checks, and hosted verification |
 | 2 | Fixture schema and validation | COMPLETE | versioned schema, deterministic integrity, strict validation, atomic storage, local and hosted verification |
-| 3 | Capture | NOT_STARTED | controlled live capture + offline tests |
+| 3 | Capture | COMPLETE | bounded controlled capture, local transport tests, fixture validation, local and hosted verification |
 | 4 | Replay engine | NOT_STARTED | exact matching tests |
 | 5 | Local replay server | NOT_STARTED | HTTP/concurrency/shutdown tests |
 | 6 | CLI integration | NOT_STARTED | end-to-end local workflow |
@@ -79,7 +79,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** obtain truthful fixtures from controlled read-only calls. **Dependencies:** Phase 2. **Scope:** bounded HTTPS client, supported methods, timeout, response capture, sanitization hook, atomic write. **Non-scope:** proxying all traffic, secrets, writes, retries that alter determinism.
 
-**Tasks:** implement `internal/capture`; reject unsupported methods; preserve JSON-RPC errors; make endpoint explicit. **Tests:** local HTTP test server, timeout, malformed response, size bound, HTTPS policy, deterministic fixture output. **Acceptance:** only `record` contacts the configured endpoint; captured data validates and hashes; no secrets are stored. **Commands:** `go test ./internal/capture ./internal/fixture`; `go vet ./...`; `git diff --check`. **Artifacts:** capture package and offline server tests. **Risks/recovery:** endpoint behavior changes; keep raw response and limitation metadata. **Network:** opt-in live endpoint; tests local. **Review:** security review justified for transport policy.
+**Tasks:** implement `internal/capture`; reject unsupported methods; preserve JSON-RPC errors; make endpoint explicit. **Tests:** local HTTP/TLS test server, timeout, malformed response, size bound, HTTPS policy, deterministic fixture output, redirect rejection, no-retry behavior, and sanitization hook. **Acceptance:** only the capture operation contacts the configured endpoint; captured data validates and hashes; request secrets are rejected and response sanitization is explicit. **Commands:** `go test ./internal/capture ./internal/fixture`; `go vet ./...`; `git diff --check`. **Artifacts:** capture package, tests, and `docs/CAPTURE.md`. **Risks/recovery:** endpoint behavior changes; keep raw response and limitation metadata. **Network:** opt-in live endpoint; tests local. **Review:** security review remains justified before release. **Status:** COMPLETE; evidence is in `PHASE_3_REPORT.md`.
 
 ### Phase 4 — Replay engine
 

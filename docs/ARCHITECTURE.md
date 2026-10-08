@@ -32,7 +32,9 @@ sequenceDiagram
 
 ## Components
 
-- `internal/capture`: bounded HTTP client, endpoint policy, request/response capture.
+- `internal/capture`: one-shot bounded HTTPS client, endpoint policy,
+  request/response capture, and the response sanitization hook. See
+  [`CAPTURE.md`](CAPTURE.md).
 - `internal/fixture`: versioned schema, canonical JSON, validation, SHA-256, and
   bounded atomic storage. The contract is documented in
   [`FIXTURE_SCHEMA.md`](FIXTURE_SCHEMA.md).

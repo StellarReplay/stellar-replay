@@ -9,19 +9,19 @@ fi
 archive="$1"
 case "$archive" in
   *.tar.gz)
-    mapfile -t entries < <(tar -tzf "$archive" | sed 's#^\./##; s#/$##' | sort | grep -v '^$')
-    expected=(LICENSE README.md stellar-replay)
+    actual=$(tar -tzf "$archive" | sed 's#^\./##; s#/$##' | sort | grep -v '^$' | paste -sd ' ' -)
+    expected="LICENSE README.md stellar-replay"
     ;;
   *.zip)
-    mapfile -t entries < <(unzip -Z1 "$archive" | sort)
-    expected=(LICENSE README.md stellar-replay.exe)
+    actual=$(unzip -Z1 "$archive" | sort | paste -sd ' ' -)
+    expected="LICENSE README.md stellar-replay.exe"
     ;;
   *) echo "unsupported archive: $archive" >&2; exit 2 ;;
 esac
 
-if [[ "${entries[*]}" != "${expected[*]}" ]]; then
+if [[ "$actual" != "$expected" ]]; then
   printf 'unexpected archive contents for %s:\n' "$archive" >&2
-  printf 'actual: %s\nexpected: %s\n' "${entries[*]}" "${expected[*]}" >&2
+  printf 'actual: %s\nexpected: %s\n' "$actual" "$expected" >&2
   exit 1
 fi
 echo "archive smoke test passed: $archive"

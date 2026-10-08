@@ -63,6 +63,14 @@ testing/control seam and are not the default production path.
 
 ## Synchronization record
 
-The implementation commit, hosted workflow, and final report checkpoint are added
-after local verification and push. Phase 4 replay remains `NOT_STARTED`; no Phase
-4 work is included here.
+The implementation commit was pushed to the public `StellarReplay/stellar-replay`
+repository on `main`:
+
+- implementation commit: `7b4c0f1afcef67190fe34b278b03a134836c1967`
+- implementation commit URL: <https://github.com/StellarReplay/stellar-replay/commit/7b4c0f1afcef67190fe34b278b03a134836c1967>
+- hosted CI run: <https://github.com/StellarReplay/stellar-replay/actions/runs/37722400831>
+- hosted CI result: `success`
+
+This report checkpoint is committed separately after hosted verification so the
+remote report contains the evidence above. Phase 4 replay remains `NOT_STARTED`;
+no Phase 4 work is included here.

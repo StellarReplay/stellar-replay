@@ -77,6 +77,18 @@ func Supported(method string) bool {
 	return ok
 }
 
+// ValidateRequest checks the supported JSON-RPC request contract without
+// requiring a response or fixture provenance.
+func ValidateRequest(r Request) error {
+	return validateRequest(r)
+}
+
+// CanonicalJSONValue returns deterministic JSON for one arbitrary JSON value.
+// It is used by other internal packages that share fixture matching semantics.
+func CanonicalJSONValue(raw json.RawMessage) ([]byte, error) {
+	return canonicalJSON(raw)
+}
+
 // Validate checks the schema, supported request contract, and integrity value.
 func Validate(f Fixture) error {
 	if err := validateStructure(f); err != nil {

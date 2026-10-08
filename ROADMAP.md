@@ -35,7 +35,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 | 1 | Research and MVP freeze | COMPLETE | decision record, protocol/network policy, local checks, and hosted verification |
 | 2 | Fixture schema and validation | COMPLETE | versioned schema, deterministic integrity, strict validation, atomic storage, local and hosted verification |
 | 3 | Capture | COMPLETE | bounded controlled capture, local transport tests, fixture validation, local and hosted verification |
-| 4 | Replay engine | NOT_STARTED | exact matching tests |
+| 4 | Replay engine | COMPLETE | exact canonical matching, integrity-gated loading, deterministic errors, concurrent-read verification, local and hosted verification |
 | 5 | Local replay server | NOT_STARTED | HTTP/concurrency/shutdown tests |
 | 6 | CLI integration | NOT_STARTED | end-to-end local workflow |
 | 7 | Deterministic test workflow | NOT_STARTED | network-free example test |
@@ -85,7 +85,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** make fixture behavior deterministic and explicit. **Dependencies:** Phase 2. **Scope:** canonical request matching, repeated calls, error responses, useful mismatch diagnostics, concurrent-safe reads. **Non-scope:** fuzzy matching, live fallback, response mutation.
 
-**Tests:** exact match, key-order normalization, type/array mismatch, method mismatch, unknown method, missing fixture, repeated and concurrent calls. **Acceptance:** no unmatched request returns a response; same request always returns same stored response; fixture integrity is checked on load. **Commands:** `go test ./internal/replay ./internal/fixture`; `go test -race ./...`; `go vet ./...`. **Artifacts:** replay package/tests. **Risks/recovery:** matching ambiguity; stop and update protocol before changing semantics. **Network:** none. **Review:** independent review optional; required if matching becomes fuzzy.
+**Tests:** exact match, key-order normalization, type/array mismatch, method mismatch, unknown method, missing fixture, repeated and concurrent calls. **Acceptance:** no unmatched request returns a successful response; same request always returns same stored response; fixture integrity is checked on load. **Commands:** `go test ./internal/replay ./internal/fixture`; `go test -race ./...`; `go vet ./...`. **Artifacts:** replay package/tests and `docs/REPLAY.md`. **Risks/recovery:** matching ambiguity; stop and update protocol before changing semantics. **Network:** none. **Review:** independent review optional; required if matching becomes fuzzy. **Status:** COMPLETE; evidence is in `PHASE_4_REPORT.md`.
 
 ### Phase 5 — Local replay server
 

@@ -33,7 +33,7 @@ Core releases, Action releases, and docs versions are independent but compatibil
 |---:|---|---|---|
 | 0 | Constitution and repository foundation | COMPLETE | three repositories synchronized; core, Action, and docs foundation workflows pass |
 | 1 | Research and MVP freeze | COMPLETE | decision record, protocol/network policy, local checks, and hosted verification |
-| 2 | Fixture schema and validation | NOT_STARTED | valid/invalid fixture tests |
+| 2 | Fixture schema and validation | COMPLETE | versioned schema, deterministic integrity, strict validation, atomic storage, local and hosted verification |
 | 3 | Capture | NOT_STARTED | controlled live capture + offline tests |
 | 4 | Replay engine | NOT_STARTED | exact matching tests |
 | 5 | Local replay server | NOT_STARTED | HTTP/concurrency/shutdown tests |
@@ -73,7 +73,7 @@ Each phase below defines objective, dependencies, scope, non-scope, research, ta
 
 **Objective/why:** establish the durable interchange contract. **Dependencies:** Phase 1. **Scope:** versioned JSON schema/model, canonical JSON, provenance, request/response/error, hash, validation, atomic storage. **Non-scope:** network capture and server.
 
-**Tasks:** implement `internal/fixture`; add valid, malformed, missing-field, modified-hash, and secret-rejection cases. **Tests:** deterministic serialization/hash, schema validation, repeated load. **Acceptance:** identical logical fixtures hash identically; invalid or modified fixtures fail before replay; fields and limitations match docs. **Commands:** `gofmt -w .`; `go test ./...`; `go vet ./...`; `git diff --check`. **Artifacts:** package, tests, schema examples. **Risks/recovery:** schema churn; version it and record migration decision. **Network:** none. **Review:** not required unless canonicalization/security is contentious.
+**Tasks:** implement `internal/fixture`; add valid, malformed, missing-field, modified-hash, and secret-rejection cases. **Tests:** deterministic serialization/hash, schema validation, repeated load. **Acceptance:** identical logical fixtures hash identically; invalid or modified fixtures fail before replay; fields and limitations match docs. **Commands:** `gofmt -w .`; `go test ./...`; `go vet ./...`; `git diff --check`. **Artifacts:** package, tests, schema examples. **Risks/recovery:** schema churn; version it and record migration decision. **Network:** none. **Review:** not required unless canonicalization/security is contentious. **Status:** COMPLETE; implementation and limitations are documented in `docs/FIXTURE_SCHEMA.md`, with evidence in `PHASE_2_REPORT.md`.
 
 ### Phase 3 — Capture
 

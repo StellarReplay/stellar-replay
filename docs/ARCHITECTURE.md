@@ -33,7 +33,9 @@ sequenceDiagram
 ## Components
 
 - `internal/capture`: bounded HTTP client, endpoint policy, request/response capture.
-- `internal/fixture`: schema, canonical JSON, validation, SHA-256, storage.
+- `internal/fixture`: versioned schema, canonical JSON, validation, SHA-256, and
+  bounded atomic storage. The contract is documented in
+  [`FIXTURE_SCHEMA.md`](FIXTURE_SCHEMA.md).
 - `internal/replay`: exact method/params matching and repeatable response selection.
 - `internal/server`: HTTP transport, malformed-input handling, concurrency, shutdown.
 - `internal/cli`: command parsing and user-facing errors.

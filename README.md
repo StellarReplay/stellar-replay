@@ -2,7 +2,7 @@
 
 Stellar Replay is a planned Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
 
-> Status: repository foundation only. No CLI, recorder, fixture validator, or replay server is implemented yet.
+> Status: fixture schema, validation, hashing, and atomic storage are implemented. The CLI, recorder, and replay server are not implemented yet.
 
 ## Why
 
@@ -21,7 +21,7 @@ flowchart LR
 
 Planned commands are `record`, `inspect`, `validate`, `replay`, and `serve`. v0.1 will support read-only `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerEntries`. It will not submit transactions, simulate transactions, execute contract code, or silently contact a live network during replay. The frozen request and endpoint policy is recorded in [docs/PHASE_1_DECISION.md](docs/PHASE_1_DECISION.md).
 
-This README describes the frozen plan; it does not claim those commands work today. See [ROADMAP.md](ROADMAP.md) and [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
+The command walkthrough remains planned; those commands do not work yet. See the implemented [fixture schema](docs/FIXTURE_SCHEMA.md), [ROADMAP.md](ROADMAP.md), and [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md).
 
 ## Intended walkthrough
 

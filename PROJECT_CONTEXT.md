@@ -49,7 +49,7 @@ The core product owns the `stellar-replay` CLI version and releases `v0.1.0` ind
 
 ## Trust and security
 
-Fixture integrity is SHA-256 over canonical fixture content excluding the integrity field. Provenance records endpoint URL, network label, capture time, and tool version; these are metadata, not proof. Secrets are rejected from explicit sensitive fields and sanitized according to documented rules. No signing or transaction submission is allowed in v0.1.
+Fixture integrity is SHA-256 over canonical fixture content excluding the integrity field. Schema v1 is implemented in `internal/fixture`; it strictly validates the four frozen read-only methods, rejects unknown fields on load, bounds fixture size and ledger keys, and atomically stores fixtures with restrictive permissions. Provenance records endpoint URL, network label, capture time, and tool version; these are metadata, not proof. Secrets are rejected from explicit sensitive request fields and sanitized according to documented rules. No signing or transaction submission is allowed in v0.1. See `docs/FIXTURE_SCHEMA.md` for the durable contract and limitations.
 
 ## Workflow
 
@@ -73,5 +73,5 @@ Local code and documentation are not the whole phase. A completed phase must hav
 
 ## Current phase
 
-Phase 0, repository and project constitution plus initial GitHub topology: `COMPLETE`. Phase 1 research and MVP freeze: `COMPLETE`; evidence is in `docs/PHASE_1_DECISION.md` and `PHASE_1_REPORT.md`. Phase 2 is next and remains `NOT_STARTED`. No product core implementation was authorized during Phase 1.
+Phase 0, repository and project constitution plus initial GitHub topology: `COMPLETE`. Phase 1 research and MVP freeze: `COMPLETE`; evidence is in `docs/PHASE_1_DECISION.md` and `PHASE_1_REPORT.md`. Phase 2 fixture schema and validation: `COMPLETE`; evidence is in `docs/FIXTURE_SCHEMA.md` and `PHASE_2_REPORT.md`. Phase 3 capture is next and remains `NOT_STARTED`. The CLI, capture engine, replay engine, and server remain unimplemented.
 

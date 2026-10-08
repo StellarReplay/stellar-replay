@@ -2,7 +2,7 @@
 
 Stellar Replay is a Go CLI for capturing selected Stellar RPC interactions as deterministic, inspectable fixtures and replaying them through a local JSON-RPC-compatible server.
 
-> Status: the v0.1 fixture, capture, replay, local server, and CLI foundation are implemented. Cross-platform release packaging and the remaining workflow phases are still in progress.
+> Status: v0.1.0 is released. The core fixture, capture, replay, local server, and CLI workflow is implemented and verified; the companion Action and extended-docs repositories remain pre-release.
 
 ## Why
 
@@ -57,13 +57,14 @@ A fixture is a captured RPC interaction, not blockchain truth. It records reques
 
 ## Installation and contribution
 
-Phase 10 defines tagged releases as statically linked archives for Linux amd64,
-Windows amd64, and macOS amd64. See [docs/RELEASES.md](docs/RELEASES.md) for
-installation and checksum verification. For source development, read
+The v0.1.0 release provides statically linked archives for Linux amd64, Windows
+amd64, and macOS amd64. See [docs/RELEASES.md](docs/RELEASES.md) and the
+[GitHub release](https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0)
+for installation and checksum verification. For source development, read
 [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md),
 and the current phase in [ROADMAP.md](ROADMAP.md).
 
-Extended guides and integration documentation will live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository will provide the GitHub Actions integration after the core CLI has a released interface. This core README remains sufficient to understand the product and its boundaries.
+Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository is the pre-release integration boundary and will target the released core interface when its contract is implemented. This core README remains sufficient to understand the product and its boundaries.
 
 ## Security
 

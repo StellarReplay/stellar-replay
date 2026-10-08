@@ -1,8 +1,8 @@
 # Releases and installation
 
-Phase 10 establishes the release boundary for the core `stellar-replay` CLI.
-Tagged core releases use semantic version tags such as `v0.1.0` and publish
-platform archives plus `SHA256SUMS` on the GitHub release page.
+The core `stellar-replay` CLI has released `v0.1.0`. Tagged core releases use
+semantic version tags and publish platform archives plus `SHA256SUMS` on the
+[GitHub release page](https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0).
 
 ## Supported release targets
 
@@ -17,7 +17,8 @@ The initial release workflow declares:
 Each archive contains only the platform binary, `LICENSE`, and `README.md`.
 The release workflow smoke-tests archive contents, checks the embedded CLI
 version, generates SHA-256 checksums, and verifies the checksum file before
-publishing. Release artifacts are not signed in v0.1.
+publishing. The v0.1.0 artifacts were independently downloaded and checked
+after publication. Release artifacts are not signed in v0.1.
 
 ## Install from an archive
 
@@ -35,8 +36,8 @@ On Windows, use the platform checksum utility or PowerShell's
 `stellar-replay.exe version`.
 
 The release workflow is triggered only by a `v*.*.*` tag. It does not publish to
-a package registry and does not sign artifacts. A release is not claimed until
-the tagged workflow and its artifact checks pass.
+a package registry and does not sign artifacts. A future release is not claimed
+until the tagged workflow and its artifact checks pass.
 
 ## Compatibility
 

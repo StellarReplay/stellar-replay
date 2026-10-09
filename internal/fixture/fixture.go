@@ -250,6 +250,9 @@ func validateStructure(f Fixture) error {
 	if err := validateResponse(f.Response); err != nil {
 		return err
 	}
+	if !sameScalarJSON(f.Request.ID, f.Response.ID) {
+		return errors.New("request and response IDs must match")
+	}
 	return nil
 }
 
@@ -503,12 +506,24 @@ func scanSensitive(value any, location string) error {
 
 func sensitiveKey(key string) bool {
 	normalized := strings.ToLower(strings.NewReplacer("_", "", "-", "", " ", "").Replace(key))
-	for _, prohibited := range []string{"privatekey", "secret", "seedphrase", "mnemonic", "password", "authorization", "accesstoken", "refreshtoken", "apikey", "bearer"} {
+	for _, prohibited := range []string{"privatekey", "secret", "seedphrase", "mnemonic", "password", "authorization", "token", "accesstoken", "refreshtoken", "apikey", "bearer"} {
 		if strings.Contains(normalized, prohibited) {
 			return true
 		}
 	}
 	return false
+}
+
+func sameScalarJSON(first, second json.RawMessage) bool {
+	left, err := canonicalJSON(first)
+	if err != nil {
+		return false
+	}
+	right, err := canonicalJSON(second)
+	if err != nil {
+		return false
+	}
+	return bytes.Equal(left, right)
 }
 
 func rejectSensitiveURL(u *url.URL) error {

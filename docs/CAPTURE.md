@@ -19,7 +19,8 @@ The capture client:
 - uses a 30-second default timeout and an 8 MiB response bound;
 - bounds the serialized request body to 8 MiB before transport invocation;
 - makes no retries and never falls back to another endpoint;
-- rejects redirects, URL userinfo, URL fragments, sensitive query fields, and
+- rejects redirects, URL userinfo, URL fragments, credential-bearing query fields
+  (including generic token keys and underscore/hyphen/case variants), and
   literal private, loopback, link-local, or unspecified addresses;
 - disables implicit proxy use for its default transport;
 - resolves hostnames at dial time and skips private, loopback, link-local, and

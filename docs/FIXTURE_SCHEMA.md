@@ -41,8 +41,9 @@ Required top-level fields are `schemaVersion`, `capturedAt`, `provenance`,
 response `error.data` are optional JSON values. The response contains exactly one
 of `result` or `error`.
 
-The request and response use JSON-RPC 2.0. IDs are scalar JSON values and are not
-used as the replay matching key. Replay will echo the incoming request ID. The
+The request and response use JSON-RPC 2.0. IDs are scalar JSON values and the
+fixture request and response IDs must match without coercing strings and numbers.
+IDs are not used as the replay matching key. Replay will echo the incoming request ID. The
 frozen v0.1 methods are `getHealth`, `getLatestLedger`, `getNetwork`, and
 `getLedgerEntries`. Zero-parameter methods accept omitted params or `{}`. The
 `getLedgerEntries` object requires a non-empty `keys` array of at most 200
@@ -63,12 +64,14 @@ truthful or that the captured state remains current.
 
 ## Validation and storage limits
 
-- Provenance requires an HTTPS endpoint without URL userinfo or sensitive query
-  parameters, plus a network label and tool version.
+- Provenance requires an HTTPS endpoint without URL userinfo or credential-bearing
+  query parameters (including generic token keys and underscore/hyphen/case
+  variants), plus a network label and tool version.
 - Unknown fields are rejected when loading from disk.
 - Fixtures larger than 8 MiB are rejected.
 - Sensitive request parameter keys such as private keys, seed phrases, passwords,
-  authorization tokens, API keys, and bearer values are rejected recursively.
+  generic or authorization tokens, API keys, and bearer values are rejected
+  recursively.
 - Response JSON is preserved as opaque JSON. XDR decoding is intentionally outside
   the schema package; base64 and JSON response representations are not interpreted
   here.

@@ -153,6 +153,10 @@ func TestCaptureEndpointPolicy(t *testing.T) {
 		"https://user:pass@rpc.example.test",
 		"https://127.0.0.1/rpc",
 		"https://rpc.example.test/rpc?api_key=secret",
+		"https://rpc.example.test/rpc?token=secret-value",
+		"https://rpc.example.test/rpc?X-Token=secret-value",
+		"https://rpc.example.test/rpc?oauth_token=secret-value",
+		"https://rpc.example.test/rpc?ID_TOKEN=secret-value",
 	} {
 		cfg := testConfigWithTransport(roundTripFunc(func(*http.Request) (*http.Response, error) {
 			return nil, errors.New("unexpected network call")
@@ -160,7 +164,19 @@ func TestCaptureEndpointPolicy(t *testing.T) {
 		cfg.Endpoint = endpoint
 		if _, err := Capture(context.Background(), cfg); err == nil {
 			t.Fatalf("endpoint %q was accepted", endpoint)
+		} else if strings.Contains(err.Error(), "secret-value") {
+			t.Fatalf("endpoint error exposed a credential value: %v", err)
 		}
+	}
+}
+
+func TestCaptureRejectsMismatchedResponseID(t *testing.T) {
+	transport := roundTripFunc(func(r *http.Request) (*http.Response, error) {
+		return jsonResponse(r, http.StatusOK, `{"jsonrpc":"2.0","id":2,"result":{"status":"healthy"}}`), nil
+	})
+	_, err := Capture(context.Background(), testConfigWithTransport(transport, "getHealth", nil))
+	if err == nil || !strings.Contains(err.Error(), "IDs must match") {
+		t.Fatalf("mismatched response ID was accepted: %v", err)
 	}
 }
 

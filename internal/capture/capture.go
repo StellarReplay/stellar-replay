@@ -233,7 +233,7 @@ func sensitiveQueryKey(key string) bool {
 	normalized := strings.ToLower(strings.NewReplacer("_", "", "-", "", " ", "").Replace(key))
 	for _, prohibited := range []string{
 		"privatekey", "secret", "seedphrase", "mnemonic", "password", "authorization",
-		"accesstoken", "refreshtoken", "apikey", "bearer", "signingkey",
+		"token", "accesstoken", "refreshtoken", "apikey", "bearer", "signingkey",
 	} {
 		if strings.Contains(normalized, prohibited) {
 			return true

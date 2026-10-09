@@ -97,8 +97,10 @@ func TestRejectsInvalidFixtures(t *testing.T) {
 		{"too many ledger keys", func(f *Fixture) { f.Request.Params = tooManyLedgerKeysParams() }, "at most"},
 		{"bad xdr format", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"xdrFormat":"xml"}`) }, "xdrFormat"},
 		{"secret field", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"api_key":"secret"}`) }, "sensitive"},
+		{"token field", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"X-Token":"secret"}`) }, "sensitive"},
 		{"bad endpoint", func(f *Fixture) { f.Provenance.Endpoint = "http://localhost:8000" }, "HTTPS"},
 		{"two response branches", func(f *Fixture) { f.Response.Error = &RPCError{Code: -1, Message: "error"} }, "exactly one"},
+		{"mismatched response ID", func(f *Fixture) { f.Response.ID = json.RawMessage(`"1"`) }, "IDs must match"},
 	}
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
@@ -106,6 +108,19 @@ func TestRejectsInvalidFixtures(t *testing.T) {
 			test.mutate(&f)
 			if err := validateStructure(f); err == nil || !strings.Contains(err.Error(), test.want) {
 				t.Fatalf("expected %q, got %v", test.want, err)
+			}
+		})
+	}
+}
+
+func TestValidatePreservesJSONRPCIDTypes(t *testing.T) {
+	f := validFixture(`{"keys":["AQIDBA=="]}`)
+	for _, responseID := range []string{`"1"`, `null`, `1.0`} {
+		t.Run(responseID, func(t *testing.T) {
+			candidate := f
+			candidate.Response.ID = json.RawMessage(responseID)
+			if err := validateStructure(candidate); err == nil || !strings.Contains(err.Error(), "IDs must match") {
+				t.Fatalf("response ID %s was accepted: %v", responseID, err)
 			}
 		})
 	}

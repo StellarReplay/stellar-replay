@@ -128,3 +128,10 @@ After this record's original submission checkpoint, the Action was released as
 Phases 13–15 are now recorded as complete in the roadmap. This addendum is a
 later event and intentionally does not alter the historical state described
 above.
+
+## Subsequent issue-queue closure
+
+The contributor issue records referenced by this historical readiness review
+were later executed and closed: #4, #5, #6, #7, #8, #9, #10, and #11. The
+current GitHub issue queue is empty. This later status does not alter the
+historical findings recorded above.

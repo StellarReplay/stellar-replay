@@ -92,10 +92,12 @@ func TestRejectsInvalidFixtures(t *testing.T) {
 		want   string
 	}{
 		{"unknown method", func(f *Fixture) { f.Request.Method = "sendTransaction" }, "unsupported RPC method"},
+		{"future schema version", func(f *Fixture) { f.SchemaVersion = "2" }, "unsupported schema version"},
 		{"positional params", func(f *Fixture) { f.Request.Method = "getHealth"; f.Request.Params = json.RawMessage(`[]`) }, "empty object"},
 		{"missing ledger keys", func(f *Fixture) { f.Request.Params = json.RawMessage(`{}`) }, "keys are required"},
 		{"too many ledger keys", func(f *Fixture) { f.Request.Params = tooManyLedgerKeysParams() }, "at most"},
 		{"bad xdr format", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"xdrFormat":"xml"}`) }, "xdrFormat"},
+		{"pagination field", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"cursor":"next"}`) }, "unsupported parameter"},
 		{"secret field", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"api_key":"secret"}`) }, "sensitive"},
 		{"token field", func(f *Fixture) { f.Request.Params = json.RawMessage(`{"keys":["AQIDBA=="],"X-Token":"secret"}`) }, "sensitive"},
 		{"bad endpoint", func(f *Fixture) { f.Provenance.Endpoint = "http://localhost:8000" }, "HTTPS"},

@@ -50,6 +50,19 @@ frozen v0.1 methods are `getHealth`, `getLatestLedger`, `getNetwork`, and
 non-empty base64 strings and optionally accepts `xdrFormat` of `base64` or
 `json`.
 
+### `getLedgerEntries` compatibility boundary
+
+Fixture schema v1 records one bounded `getLedgerEntries` request and its result.
+It does not define `page`, `cursor`, `nextPage`, or an equivalent pagination
+field. Those fields are rejected by strict validation. This is intentional: v0.1
+does not silently invent pagination semantics or merge multiple provider pages
+into one fixture. A future pagination capability would require protocol research,
+new fixtures, compatibility tests, and an explicit schema/roadmap decision.
+
+For large workloads, split requests into independently reviewed fixtures with
+no more than 200 keys each. This is bounded fixture composition, not a claim
+that the RPC provider supports a particular pagination protocol.
+
 ## Integrity and canonical JSON
 
 `Seal` computes SHA-256 over canonical JSON for the complete fixture with the

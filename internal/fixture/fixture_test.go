@@ -164,6 +164,20 @@ func TestSaveLoadAndRejectUnknownFields(t *testing.T) {
 	}
 }
 
+func FuzzValidateRequestNoPanic(f *testing.F) {
+	f.Add([]byte(`{"keys":["AQIDBA=="],"xdrFormat":"base64"}`))
+	f.Add([]byte(`{"keys":[],"xdrFormat":"json"}`))
+	f.Add([]byte(`{"token":"secret"}`))
+	f.Fuzz(func(t *testing.T, params []byte) {
+		_ = ValidateRequest(Request{
+			JSONRPC: "2.0",
+			ID:      json.RawMessage(`1`),
+			Method:  "getLedgerEntries",
+			Params:  params,
+		})
+	})
+}
+
 func TestZeroParameterMethodsAcceptOmittedAndEmptyParams(t *testing.T) {
 	for _, params := range []json.RawMessage{nil, json.RawMessage(`{}`)} {
 		f := validFixture(`{"keys":["AQIDBA=="]}`)

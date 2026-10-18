@@ -33,6 +33,16 @@ func TestResponseRedactsSensitiveKeysAndSecretValues(t *testing.T) {
 	}
 }
 
+func FuzzResponseNoPanic(f *testing.F) {
+	f.Add([]byte(`{"safe":"value","api_key":"secret"}`))
+	f.Add([]byte(`[{"authorization":"Bearer secret"}]`))
+	f.Add([]byte(`null`))
+	f.Fuzz(func(t *testing.T, result []byte) {
+		response := &fixture.Response{Result: result}
+		_ = Response(response)
+	})
+}
+
 func TestResponseRejectsMalformedJSON(t *testing.T) {
 	response := fixture.Response{Result: json.RawMessage(`{"ok":true} trailing`)}
 	if err := Response(&response); err == nil || !strings.Contains(err.Error(), "trailing") {

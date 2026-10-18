@@ -284,3 +284,24 @@ hosted replay, and broad blockchain support remain outside the product unless a
 future strategy review explicitly changes the constitution. They cannot be
 smuggled in as “developer experience” work.
 
+## Submission-readiness status
+
+This section supplements, but does not replace, the phase register. It records
+the evidence-backed state used for Drips Wave and GrantFox contributor outreach.
+
+| Area | Status | Evidence | Remaining work |
+|---|---|---|---|
+| Core CLI | COMPLETE / RELEASED | `cmd/stellar-replay`, CLI tests, v0.1.0 release | Gather external usage evidence |
+| Fixture format | COMPLETE / FROZEN v1 | `internal/fixture`, schema, hashing and validation tests | Compatibility tests for future schema versions |
+| Offline replay | COMPLETE | replay package, checked-in fixtures, offline example | More SDK-focused examples if demand appears |
+| Local server | COMPLETE | loopback server and concurrency/error tests | Document client compatibility gaps as discovered |
+| Security boundary | COMPLETE for v0.1 scope | threat model, sanitization, bounds, URL policy, hardening tests | Independent review and signed provenance are future work |
+| GitHub Action | IMPLEMENTED / UNTAGGED | released-core download, SHA-256 verification, validate/replay, CI smoke path | Publish an Action tag only after maintainer release review |
+| Releases | COMPLETE for core v0.1.0 | published archives, checksums, cross-platform CI | Future signing/provenance decision |
+| Documentation | CORE COMPLETE / DOCS PRE-RELEASE | core command/schema/security docs and docs CI | Add adoption guides and versioned integration docs |
+| Contributor onboarding | READY TO IMPROVE | contribution/security/support policies and issue scope below | Create and maintain scoped starter issues |
+
+Submission claims must use these labels: implemented, tested, released,
+experimental, planned, unsupported, or unknown. The Action is not advertised
+as a tagged marketplace release until a maintainer authorizes that release.
+

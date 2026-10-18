@@ -92,6 +92,46 @@ func TestCheckedInFixtureMatrix(t *testing.T) {
 	}
 }
 
+func TestOfflineReplayMethodMatrix(t *testing.T) {
+	engine, err := replay.Load(
+		"../fixtures/get-health.json",
+		"../fixtures/get-latest-ledger.json",
+		"../fixtures/get-network.json",
+		"../fixtures/get-ledger-entries.json",
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	localServer, err := server.New(engine, server.Config{})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := localServer.Start(); err != nil {
+		t.Fatal(err)
+	}
+	defer func() { _ = localServer.Shutdown(context.Background()) }()
+
+	cases := []struct {
+		name     string
+		request  string
+		response string
+	}{
+		{name: "health", request: `{"jsonrpc":"2.0","id":11,"method":"getHealth"}`, response: `"status":"healthy"`},
+		{name: "latest ledger", request: `{"jsonrpc":"2.0","id":12,"method":"getLatestLedger"}`, response: `"sequence":123456`},
+		{name: "network", request: `{"jsonrpc":"2.0","id":13,"method":"getNetwork"}`, response: `"protocolVersion":22`},
+		{name: "ledger entries", request: `{"jsonrpc":"2.0","id":14,"method":"getLedgerEntries","params":{"keys":["AQIDBA=="],"xdrFormat":"base64"}}`, response: `"latestLedger":123456`},
+	}
+	client := &http.Client{Transport: loopbackOnlyTransport{base: http.DefaultTransport}}
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			body := doReplayRequest(t, client, localServer.Endpoint(), []byte(tc.request))
+			if !bytes.Contains(body, []byte(tc.response)) {
+				t.Fatalf("response did not contain %q: %s", tc.response, body)
+			}
+		})
+	}
+}
+
 func doReplayRequest(t *testing.T, client *http.Client, endpoint string, body []byte) []byte {
 	t.Helper()
 	result, err := requestReplay(client, endpoint, body)

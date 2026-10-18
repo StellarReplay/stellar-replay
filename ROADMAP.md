@@ -52,7 +52,7 @@ The long-term plan is interpreted as **product era → milestone → phase → t
 | 12 | v0.1.0 release | COMPLETE | published artifacts, checksums, platform smoke tests, release evidence |
 | 13 | Post-release stabilization and onboarding | COMPLETE | fresh-checkout offline smoke path, corrected support/release claims, support template, adoption evidence record |
 | 14 | Action contract and secure integration | COMPLETE | versioned Action v0.1.0, released-core pinning, checksum verification, offline validation, hosted metadata checks |
-| 15 | Documentation and contributor adoption baseline | COMPLETE | version-pinned Action docs, meaningful docs CI, issue triage labels, scoped contributor surface |
+| 15 | Documentation and contributor adoption baseline | COMPLETE | version-pinned Action docs, meaningful docs CI, issue triage labels, and closed issue-queue evidence |
 
 ## Phase execution protocol
 
@@ -340,7 +340,7 @@ the evidence-backed state used for Drips Wave and GrantFox contributor outreach.
 | GitHub Action | IMPLEMENTED / UNTAGGED | released-core download, SHA-256 verification, validate/replay, CI smoke path | Publish an Action tag only after maintainer release review |
 | Releases | COMPLETE for core v0.1.0 | published archives, checksums, cross-platform CI | Future signing/provenance decision |
 | Documentation | CORE COMPLETE / DOCS PRE-RELEASE | core command/schema/security docs and docs CI | Add adoption guides and versioned integration docs |
-| Contributor onboarding | READY TO IMPROVE | contribution/security/support policies and issue scope below | Create and maintain scoped starter issues |
+| Contributor onboarding | COMPLETE FOR CURRENT QUEUE | contribution/security/support policies and resolved issue-queue evidence | Open new issues only when new product evidence justifies them |
 
 Submission claims must use these labels: implemented, tested, released,
 experimental, planned, unsupported, or unknown. The Action is not advertised

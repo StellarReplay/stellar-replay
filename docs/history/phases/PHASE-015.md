@@ -19,8 +19,10 @@ core and Action while making scoped external work easy to discover.
 ## Verification
 
 Docs CI passed for the synchronized documentation PR. The core repository now
-has a support template and six open issue records as future contribution
-opportunities.
+had a support template and six open issue records as future contribution
+opportunities at the phase checkpoint. Those records were subsequently
+implemented, verified, and closed; the current repository has no open issue
+queue.
 
 ## Evidence
 

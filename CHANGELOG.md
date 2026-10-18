@@ -1,5 +1,15 @@
 # Changelog
 
+## Unreleased
+
+- Added an offline Soroban-oriented `getLedgerEntries` integration example and
+  documented the v0.1 no-pagination boundary.
+- Added schema compatibility and unsupported-pagination regression coverage,
+  expanded troubleshooting guidance, and strengthened the Action's
+  cross-platform/offline validation matrix.
+- Resolved the current contributor issue queue (#4–#11); future issues should be
+  opened only when new product evidence justifies them.
+
 ## v0.1.0 - 2026-10-08
 
 - First verified Stellar Replay core release. The release includes the read-only

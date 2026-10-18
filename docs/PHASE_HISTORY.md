@@ -24,7 +24,7 @@ future work; this page is the navigable evidence index.
 | 12 | Release / v0.1.0 | Tag, published release, checksums, artifact inspection, and smoke tests completed | [Phase 12](history/phases/PHASE-012.md), [release](RELEASES.md) |
 | 13 | Productization / onboarding | Fresh-checkout smoke path, support guidance, and adoption evidence record | [Phase 13](history/phases/PHASE-013.md) |
 | 14 | Productization / Action | Versioned Action v0.1.0 with released-core checksum verification | [Phase 14](history/phases/PHASE-014.md) |
-| 15 | Productization / adoption baseline | Version-pinned docs and contributor issue triage | [Phase 15](history/phases/PHASE-015.md) |
+| 15 | Productization / adoption baseline | Version-pinned docs, contributor issue triage, and closure evidence | [Phase 15](history/phases/PHASE-015.md) |
 
 ## Historical interpretation
 

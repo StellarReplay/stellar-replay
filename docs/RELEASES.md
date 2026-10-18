@@ -39,6 +39,14 @@ The release workflow is triggered only by a `v*.*.*` tag. It does not publish to
 a package registry and does not sign artifacts. A future release is not claimed
 until the tagged workflow and its artifact checks pass.
 
+## Support status
+
+v0.1.0 is an early developer release, not a hosted service or a promise of
+long-term platform compatibility. Report reproducible problems with the
+version, operating system, command, sanitized fixture shape, and complete
+error. Never attach credentials, authentication headers, private RPC URLs, or
+unreviewed production captures.
+
 ## Compatibility
 
 The core CLI version, fixture schema version, and release documentation are

@@ -20,6 +20,11 @@ No credentials or live RPC access are required. The checked-in fixtures and
 offline example are the default proof path. Run `gofmt -w .` and
 `git diff --check` before committing.
 
+The same release-readiness proof can be run with
+`bash scripts/smoke-offline.sh` on Unix-like systems or
+`./scripts/smoke-offline.ps1` on Windows. Both commands are offline and do not
+require credentials.
+
 ## Documentation and fixtures
 
 Update the relevant documentation when behavior changes. Command flags belong in

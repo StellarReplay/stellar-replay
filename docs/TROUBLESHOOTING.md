@@ -19,6 +19,36 @@ parameter object, array order, scalar types, and `xdrFormat`. For zero-parameter
 methods, omitted params and `{}` are equivalent. Use `inspect` to confirm the
 fixture method and provenance.
 
+## `unsupported fixture schema version`
+
+Fixture schema versions are strict. A v1 CLI rejects a future schema instead of
+silently guessing its meaning. Use a core release compatible with the fixture's
+schema, or regenerate the fixture with the intended release. Do not change
+`schemaVersion` by hand; the integrity hash and documented semantics must change
+together through an explicit compatibility decision.
+
+## `integrity hash mismatch`
+
+The fixture changed after it was sealed, or it was produced by a different
+canonicalization rule. Restore the original fixture or regenerate it with the
+same core release. Do not disable integrity checks or edit the stored hash to
+make validation pass.
+
+## Action validation or checksum failure
+
+The versioned Action downloads a released core archive and verifies its
+`SHA256SUMS` entry before execution. Confirm that the workflow uses
+`StellarReplay/stellar-replay-action@v0.1.0`, requests supported core `0.1.0`,
+and has access to the public release assets. A missing fixture, unsupported
+command/version, missing asset, or checksum mismatch is intentionally fail-closed.
+
+## `getLedgerEntries` pagination question
+
+v0.1 accepts a bounded keys array and optional `xdrFormat`; it does not accept
+page or cursor fields. Split a large workload into independently validated
+fixtures, or wait for a versioned compatibility decision. Do not add provider-
+specific pagination fields to an existing fixture.
+
 ## `endpoint must be an HTTPS URL` or endpoint policy errors
 
 Only `record` contacts a live endpoint. Use an explicit HTTPS URL without userinfo,

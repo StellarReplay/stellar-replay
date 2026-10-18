@@ -31,7 +31,7 @@ The full ownership map is maintained in [docs/REPOSITORY_ARCHITECTURE.md](docs/R
 
 ## Strategy hierarchy
 
-The long-term plan is interpreted as **product era → milestone → phase → task → verification evidence**. Completed phases 0–12 form Era 1 Foundation/MVP/Release. The organization is now in Era 2, Developer Productization: the core is released, while the Action and docs repositories are pre-release companions. Future phase cards must include objective, dependencies, affected repositories, scope and non-scope, tests, security, documentation, CI, acceptance, commands, evidence, risks, rollback, release impact, agent/review guidance, network needs, and maintainer authorization.
+The long-term plan is interpreted as **product era → milestone → phase → task → verification evidence**. Completed phases 0–12 form Era 1 Foundation/MVP/Release. The organization is now in Era 2, Developer Productization: the core and Action are released v0.1.0, while the docs repository remains an independently versioned documentation surface. Future phase cards must include objective, dependencies, affected repositories, scope and non-scope, tests, security, documentation, CI, acceptance, commands, evidence, risks, rollback, release impact, agent/review guidance, network needs, and maintainer authorization.
 
 ## Phase register
 
@@ -50,6 +50,9 @@ The long-term plan is interpreted as **product era → milestone → phase → t
 | 10 | CI and cross-platform release | COMPLETE | matrix and artifacts, local package smoke tests, hosted verification |
 | 11 | Release candidate and final audit | COMPLETE | final audit, findings, go/no-go, local and hosted verification |
 | 12 | v0.1.0 release | COMPLETE | published artifacts, checksums, platform smoke tests, release evidence |
+| 13 | Post-release stabilization and onboarding | COMPLETE | fresh-checkout offline smoke path, corrected support/release claims, support template, adoption evidence record |
+| 14 | Action contract and secure integration | COMPLETE | versioned Action v0.1.0, released-core pinning, checksum verification, offline validation, hosted metadata checks |
+| 15 | Documentation and contributor adoption baseline | COMPLETE | version-pinned Action docs, meaningful docs CI, issue triage labels, scoped contributor surface |
 
 ## Phase execution protocol
 
@@ -199,7 +202,7 @@ scope justifies it.
 
 #### Phase 14 — Action contract and secure integration
 
-- **Parent:** Era 2 / Milestone 11. **Status:** CANDIDATE. **Objective:** define
+- **Parent:** Era 2 / Milestone 11. **Status:** COMPLETE. **Objective:** define
   and, if justified, implement the smallest useful Action around released core.
 - **Why/dependencies:** depends on Phase 13 feedback and an approved binary
   acquisition/version-pinning design. **Repositories:** Action plus core docs;
@@ -210,7 +213,8 @@ scope justifies it.
   network capture, or unpinned `main` downloads.
 - **Tests/security/docs/CI:** action metadata/YAML validation, fixture-based
   integration, malicious-input/path tests, permission audit, hosted Action CI;
-  document compatibility and rollback to the pre-release guard.
+  document compatibility and rollback behavior. Evidence: Action v0.1.0
+  release and hosted metadata checks.
 - **Acceptance/evidence:** reproducible Action run against a released core,
   explicit compatibility matrix, no secret exposure, tagged Action release.
 - **Commands:** repository-specific metadata/YAML checks, core fixture validation,
@@ -219,7 +223,7 @@ scope justifies it.
 
 #### Phase 15 — Documentation adoption baseline
 
-- **Parent:** Era 2 / Milestone 12. **Status:** CANDIDATE. **Objective:** make
+- **Parent:** Era 2 / Milestone 12. **Status:** COMPLETE. **Objective:** make
   the docs repository useful without duplicating core truth.
 - **Why/dependencies:** depends on v0.1.0 and Phase 13 terminology. **Repositories:**
   docs primarily; core links and compatibility notes.
@@ -231,7 +235,8 @@ scope justifies it.
   versioned docs commit and guide review.
 - **Acceptance/evidence:** a new user can follow core README then docs guides;
   every behavior claim links to core authority. Live network: no. Authorization:
-  yes. Agent: Codex; content review may use an independent reader.
+  yes. Agent: Codex; content review may use an independent reader. Evidence:
+  docs Action v0.1.0 synchronization and core onboarding PRs.
 
 #### Phase 16 — Evidence-backed compatibility expansion
 
@@ -276,6 +281,42 @@ scope justifies it.
   migration plan, release checklist, and repository action plan update. Live
   network: no by default. Maintainer authorization: yes; independent audit is
   recommended.
+
+## Current maturity and release gates
+
+The organization is no longer at foundation stage. It is in **early developer
+productization**: core v0.1.0 and Action v0.1.0 are released, the docs surface
+is synchronized, and contributor work is discoverable. It is not yet a mature
+ecosystem product because external usage, external contributions, and sustained
+compatibility evidence have not been established.
+
+### v0.2.0 should mean
+
+v0.2.0 is justified only when the project has evidence from real users or
+contributors and can document a small set of backward-compatible improvements.
+Candidate gates are:
+
+- at least one externally reported workflow or contribution that is safely
+  reproducible;
+- stable Action compatibility and a documented upgrade path;
+- fixture schema compatibility tests and migration guidance;
+- improved troubleshooting and at least one practical Soroban integration
+  example;
+- no unresolved security or release-integrity blocker.
+
+v0.2.0 must not become a reason to add methods, signing, a UI, or a hosted
+service without separate evidence and a constitution review.
+
+### v1.0.0 should mean
+
+v1.0.0 is a maturity decision, not a calendar target. It requires sustained
+release stability, an explicit compatibility/deprecation policy, reliable
+cross-platform CI, documented security response, independent review of the
+trust boundaries, contributor or user evidence, and a maintainer-approved
+decision that the frozen core contract can be supported responsibly.
+
+Until those gates are met, the truthful product claim remains **released early
+developer product**, not production-grade platform.
 
 ## Out-of-scope guardrail
 

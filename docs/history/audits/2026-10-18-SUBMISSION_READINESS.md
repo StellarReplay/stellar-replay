@@ -120,3 +120,11 @@ another repository split: publish a versioned Action only after its compatibilit
 and cross-platform matrix are proven, then use the scoped issues to gather
 external contribution evidence. A maintainer-authorized Action release remains
 required before calling the Action production-ready.
+
+## Subsequent productization update
+
+After this record's original submission checkpoint, the Action was released as
+`v0.1.0` and the documentation examples were synchronized to the immutable tag.
+Phases 13–15 are now recorded as complete in the roadmap. This addendum is a
+later event and intentionally does not alter the historical state described
+above.

@@ -23,7 +23,10 @@
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
-> **Released:** v0.1.0. The core fixture, capture, replay, local server, and CLI workflow is implemented and verified. The companion Action is implemented against the released core but has no Action release tag yet; extended docs remain pre-release.
+> **Released:** core v0.1.0 and Action v0.1.0. The core fixture, capture,
+> replay, local server, and CLI workflow is implemented and verified. The
+> Action consumes the released core with checksum verification; extended docs
+> remain an independently versioned documentation surface.
 
 ## What problem does this solve?
 
@@ -83,7 +86,7 @@ for installation and checksum verification. For source development, read
 [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md),
 and the current phase in [ROADMAP.md](ROADMAP.md).
 
-Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository provides an untagged Action integration for the released core; use its `main` reference only after reviewing its compatibility contract. This core README remains sufficient to understand the product and its boundaries.
+Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository provides the versioned `v0.1.0` Action integration for the released core. This core README remains sufficient to understand the product and its boundaries.
 
 ## Security
 

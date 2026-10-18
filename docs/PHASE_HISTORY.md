@@ -22,6 +22,9 @@ future work; this page is the navigable evidence index.
 | 10 | Release / CI | Cross-platform CI, archives, checksums, and packaging completed | [Phase 10](history/phases/PHASE-010.md) |
 | 11 | Release / audit | Conditional release GO and accepted limitations recorded | [Final audit](history/audits/FINAL_AUDIT.md) |
 | 12 | Release / v0.1.0 | Tag, published release, checksums, artifact inspection, and smoke tests completed | [Phase 12](history/phases/PHASE-012.md), [release](RELEASES.md) |
+| 13 | Productization / onboarding | Fresh-checkout smoke path, support guidance, and adoption evidence record | [Phase 13](history/phases/PHASE-013.md) |
+| 14 | Productization / Action | Versioned Action v0.1.0 with released-core checksum verification | [Phase 14](history/phases/PHASE-014.md) |
+| 15 | Productization / adoption baseline | Version-pinned docs and contributor issue triage | [Phase 15](history/phases/PHASE-015.md) |
 
 ## Historical interpretation
 

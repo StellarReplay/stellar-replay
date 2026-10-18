@@ -7,8 +7,8 @@ information here.
 
 ## Current evidence
 
-As of 2026-10-18, the repository has a verified v0.1.0 release, a functional
-but untagged GitHub Action, an extended documentation repository, and scoped
+As of 2026-10-18, the repository has a verified core v0.1.0 release, a
+versioned Action v0.1.0, an extended documentation repository, and scoped
 contributor issues. No external usage report or external contribution has yet
 been independently recorded in this repository.
 

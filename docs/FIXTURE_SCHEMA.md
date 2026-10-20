@@ -63,6 +63,13 @@ For large workloads, split requests into independently reviewed fixtures with
 no more than 200 keys each. This is bounded fixture composition, not a claim
 that the RPC provider supports a particular pagination protocol.
 
+The checked-in edge-case corpus includes a synthetic ledger-retention error
+fixture. Provider-style retention failures are represented as ordinary JSON-RPC
+error responses and replay deterministically; the example error code is not
+claimed to be universal across RPC providers. Malformed envelopes, mismatched
+IDs, response branch violations, and pagination fields are rejection fixtures
+under `tests/fixtures/invalid/` and are never treated as usable replay data.
+
 ## Integrity and canonical JSON
 
 `Seal` computes SHA-256 over canonical JSON for the complete fixture with the

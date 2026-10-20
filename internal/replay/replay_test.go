@@ -132,6 +132,27 @@ func TestLoadAndErrorResponse(t *testing.T) {
 	}
 }
 
+func TestReplayPreservesCheckedInLedgerRetentionError(t *testing.T) {
+	path := filepath.Join("..", "..", "fixtures", "edge-cases", "get-ledger-entries-retention.json")
+	engine, err := Load(path)
+	if err != nil {
+		t.Fatal(err)
+	}
+	response, err := engine.Replay(fixture.Request{
+		JSONRPC: "2.0", ID: json.RawMessage(`7`), Method: "getLedgerEntries",
+		Params: json.RawMessage(`{"keys":["AQIDBA=="],"xdrFormat":"base64"}`),
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if response.Error == nil || response.Error.Code != -32001 || !strings.Contains(response.Error.Message, "retention") {
+		t.Fatalf("retention error was not replayed: %+v", response)
+	}
+	if string(response.ID) != "7" {
+		t.Fatalf("replay did not echo request ID: %s", response.ID)
+	}
+}
+
 func TestReplayConcurrentReads(t *testing.T) {
 	engine := mustEngine(t, validFixture("getHealth", `{}`, `{"status":"healthy"}`))
 	const workers = 64

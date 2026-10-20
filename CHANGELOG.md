@@ -12,6 +12,9 @@
 - Added the initial Node.js/TypeScript CLI adapter for core `v0.1.0`; it
   delegates validation and replay to the released Go binary without duplicating
   the replay engine.
+- Expanded the checked-in edge-case corpus with deterministic ledger-retention
+  error replay and rejection fixtures for malformed responses, response-ID
+  mismatches, invalid response branches, and unsupported pagination fields.
 
 ## v0.1.0 - 2026-10-08
 

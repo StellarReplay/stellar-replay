@@ -41,7 +41,7 @@ Supported methods: `getHealth`, `getLatestLedger`, `getNetwork`, and `getLedgerE
 
 ## Architecture decision
 
-Go is selected over TypeScript for a single cross-platform binary, simple HTTP concurrency, standard JSON tooling, and low operational footprint. TypeScript has excellent SDK ergonomics and ecosystem reach, but would add a runtime/package distribution decision for a CLI whose core needs are protocol and file handling. The implementation may later add an optional SDK adapter, but v0.1 core does not depend on one.
+Go is selected over TypeScript for a single cross-platform binary, simple HTTP concurrency, standard JSON tooling, and low operational footprint. TypeScript has excellent SDK ergonomics and ecosystem reach, but would add a runtime/package distribution decision for a CLI whose core needs are protocol and file handling. An optional Node.js/TypeScript CLI adapter now exists under `integrations/typescript`; it delegates to the released Go binary and does not change the v0.1 core contract or make the core depend on Node.js.
 
 ## Versioning and releases
 

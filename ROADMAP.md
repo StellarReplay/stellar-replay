@@ -5,7 +5,9 @@ This is the executable master plan. Statuses are `NOT_STARTED`, `IN_PROGRESS`, `
 ## Priority fence
 
 - **P0 / v0.1:** research, frozen method scope, fixture schema/validation/hash, capture, replay, local server, CLI, deterministic tests, sanitization, docs, examples, CI, cross-platform release, final audit.
-- **P1 / time permitting:** SDK adapters, richer diffing/metadata, more methods, UX polish.
+- **P1 / time permitting:** SDK adapters, richer diffing/metadata, more methods, UX polish. The initial
+  Node.js/TypeScript CLI adapter is now established under `integrations/typescript`; future package releases remain
+  compatibility- and usage-gated.
 - **P2 / cannot delay v0.1:** browser/UI, full proxy, record-all traffic, visualization, AI, unrelated integrations.
 
 ## Repository architecture

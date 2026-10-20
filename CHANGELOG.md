@@ -9,6 +9,9 @@
   cross-platform/offline validation matrix.
 - Resolved the current contributor issue queue (#4–#11); future issues should be
   opened only when new product evidence justifies them.
+- Added the initial Node.js/TypeScript CLI adapter for core `v0.1.0`; it
+  delegates validation and replay to the released Go binary without duplicating
+  the replay engine.
 
 ## v0.1.0 - 2026-10-08
 

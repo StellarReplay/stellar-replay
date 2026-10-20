@@ -70,7 +70,7 @@ The default integration proof is also runnable without credentials or network:
 go test ./examples -run TestOfflineReplayWorkflow -count=1
 ```
 
-See the executable [demo](docs/DEMO.md), [Soroban integration example](docs/SOROBAN_INTEGRATION.md), [command reference](docs/COMMANDS.md),
+See the executable [demo](docs/DEMO.md), [Soroban integration example](docs/SOROBAN_INTEGRATION.md), [JavaScript/TypeScript integration](docs/JAVASCRIPT_INTEGRATION.md), [command reference](docs/COMMANDS.md),
 [supported methods](docs/METHODS.md), and [troubleshooting guide](docs/TROUBLESHOOTING.md).
 
 ## Fixture philosophy

@@ -10,6 +10,12 @@ The repository includes four deterministic, sanitized examples covering
 fixed testnet provenance and synthetic safe response values; they are not claims
 about current chain state and contain no credentials or private data.
 
+The [`edge-cases/`](edge-cases/) directory adds a valid synthetic
+ledger-retention error fixture. Intentionally invalid envelopes, malformed
+responses, response-ID mismatches, and unsupported pagination shapes are kept
+under `tests/fixtures/invalid/` and are tested as rejection cases rather than
+loaded into the normal replay matrix.
+
 Phase 7 loads this fixture matrix in the offline integration example. New
 fixtures must pass `stellar-replay validate` and remain safe to publish before
 being checked in.

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "1",
+  "capturedAt": "2026-10-20T12:00:00Z",
+  "provenance": {
+    "endpoint": "https://soroban-testnet.stellar.org",
+    "network": "testnet",
+    "toolVersion": "stellar-replay/edge-cases"
+  },
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 101,
+    "method": "getLedgerEntries",
+    "params": {
+      "keys": ["AQIDBA=="],
+      "xdrFormat": "base64"
+    }
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 101,
+    "error": {
+      "code": -32001,
+      "message": "ledger is outside provider retention window",
+      "data": {
+        "reason": "retention"
+      }
+    }
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "sha256": "9da345c13b716c193da5f17c58d50e245e90378305257fad9eeda12aae7af045"
+  }
+}

@@ -9,7 +9,9 @@ supported methods, validation, replay matching, and security policy. The
 adapter does not copy the replay engine, add live-network fallback, or invent
 pagination semantics.
 
-The current compatibility target is core `v0.1.0` and Node.js `18+`.
+The current compatibility target is core `v0.1.1`, adapter package `0.1.1`,
+and Node.js `18+`. The adapter is independently distributed on npm as
+[`@stellar-replay/cli-adapter`](https://www.npmjs.com/package/@stellar-replay/cli-adapter).
 
 Supported operations:
 

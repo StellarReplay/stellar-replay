@@ -2,6 +2,13 @@
 
 ## Unreleased
 
+No unreleased changes.
+
+## v0.1.1 - 2026-10-20
+
+- Published the Node.js/TypeScript CLI adapter as
+  `@stellar-replay/cli-adapter@0.1.1`, compatible with core `v0.1.1` and
+  Node.js 18+.
 - Added an offline Soroban-oriented `getLedgerEntries` integration example and
   documented the v0.1 no-pagination boundary.
 - Added schema compatibility and unsupported-pagination regression coverage,
@@ -9,7 +16,7 @@
   cross-platform/offline validation matrix.
 - Resolved the current contributor issue queue (#4–#11); future issues should be
   opened only when new product evidence justifies them.
-- Added the initial Node.js/TypeScript CLI adapter for core `v0.1.0`; it
+- Added the initial Node.js/TypeScript CLI adapter for core `v0.1.1`; it
   delegates validation and replay to the released Go binary without duplicating
   the replay engine.
 - Expanded the checked-in edge-case corpus with deterministic ledger-retention

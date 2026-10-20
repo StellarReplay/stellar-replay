@@ -1,0 +1,11 @@
+{
+  "name": "stellar-replay-stellar-js-sdk-example",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "verify": "node client.mjs"
+  },
+  "dependencies": {
+    "@stellar/stellar-sdk": "17.2.1"
+  }
+}

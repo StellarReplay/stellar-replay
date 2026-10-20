@@ -1,0 +1,38 @@
+{
+  "schemaVersion": "1",
+  "capturedAt": "2026-10-20T12:00:00Z",
+  "provenance": {
+    "endpoint": "https://soroban-testnet.stellar.org",
+    "network": "testnet",
+    "toolVersion": "stellar-replay/downstream-stellar-js-sdk"
+  },
+  "request": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "getLedgerEntries",
+    "params": {
+      "keys": [
+        "AAAABgAAAAGTnozAkG0Lx6x5RJuwKN73cnabLJM2wp+KFE2/pm6VqwAAABAAAAABAAAAAQAAAA4AAAAOc3RlbGxhci1yZXBsYXkAAAAAAAE="
+      ]
+    }
+  },
+  "response": {
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": {
+      "latestLedger": 420,
+      "entries": [
+        {
+          "lastModifiedLedgerSeq": 42,
+          "key": "AAAABgAAAAGTnozAkG0Lx6x5RJuwKN73cnabLJM2wp+KFE2/pm6VqwAAABAAAAABAAAAAQAAAA4AAAAOc3RlbGxhci1yZXBsYXkAAAAAAAE=",
+          "xdr": "AAAABgAAAAAAAAABk56MwJBtC8eseUSbsCje93J2myyTNsKfihRNv6ZulasAAAAQAAAAAQAAAAEAAAAOAAAADnN0ZWxsYXItcmVwbGF5AAAAAAABAAAAEAAAAAEAAAABAAAADgAAAA5zdGVsbGFyLXJlcGxheQAA",
+          "liveUntilLedgerSeq": 1000
+        }
+      ]
+    }
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "sha256": "7851bcc848949d53ed9bacf40ac502779748147b2ae90e4f8546ff469d373463"
+  }
+}

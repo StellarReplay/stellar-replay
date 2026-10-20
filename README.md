@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0"><img src="https://img.shields.io/github/v/release/StellarReplay/stellar-replay?display_name=tag&sort=semver" alt="Latest release" /></a>
+  <a href="https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.1"><img src="https://img.shields.io/github/v/release/StellarReplay/stellar-replay?display_name=tag&sort=semver" alt="Latest release" /></a>
   <a href="https://github.com/StellarReplay/stellar-replay/actions/workflows/ci.yml"><img src="https://github.com/StellarReplay/stellar-replay/actions/workflows/ci.yml/badge.svg?branch=main" alt="CI status" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-4F8CFF" alt="Apache-2.0 license" /></a>
   <img src="https://img.shields.io/badge/Stellar%20%2F%20Soroban-RPC-5BE7C4" alt="Stellar and Soroban RPC" />
@@ -23,7 +23,7 @@
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
-> **Released:** core v0.1.0 and Action v0.1.0. The core fixture, capture,
+> **Released:** core v0.1.1 and Action v0.1.0. The core fixture, capture,
 > replay, local server, and CLI workflow is implemented and verified. The
 > Action consumes the released core with checksum verification; extended docs
 > remain an independently versioned documentation surface.
@@ -79,14 +79,14 @@ A fixture is a captured RPC interaction, not blockchain truth. It records reques
 
 ## Installation and contribution
 
-The v0.1.0 release provides statically linked archives for Linux amd64, Windows
+The v0.1.1 release provides statically linked archives for Linux amd64, Windows
 amd64, and macOS amd64. See [docs/RELEASES.md](docs/RELEASES.md) and the
-[GitHub release](https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0)
+[GitHub release](https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.1)
 for installation and checksum verification. For source development, read
 [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md),
 and the current phase in [ROADMAP.md](ROADMAP.md).
 
-Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository provides the versioned `v0.1.0` Action integration for the released core. This core README remains sufficient to understand the product and its boundaries.
+Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository provides the versioned `v0.1.0` Action integration for the released core. The independently distributable [`@stellar-replay/cli-adapter`](https://www.npmjs.com/package/@stellar-replay/cli-adapter) package provides Node.js/TypeScript access to the released CLI. This core README remains sufficient to understand the product and its boundaries.
 
 ## Security
 

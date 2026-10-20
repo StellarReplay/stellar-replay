@@ -1,8 +1,8 @@
 # Releases and installation
 
-The core `stellar-replay` CLI has released `v0.1.0`. Tagged core releases use
+The core `stellar-replay` CLI has released `v0.1.1`. Tagged core releases use
 semantic version tags and publish platform archives plus `SHA256SUMS` on the
-[GitHub release page](https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.0).
+[GitHub release page](https://github.com/StellarReplay/stellar-replay/releases/tag/v0.1.1).
 
 ## Supported release targets
 
@@ -17,7 +17,7 @@ The initial release workflow declares:
 Each archive contains only the platform binary, `LICENSE`, and `README.md`.
 The release workflow smoke-tests archive contents, checks the embedded CLI
 version, generates SHA-256 checksums, and verifies the checksum file before
-publishing. The v0.1.0 artifacts were independently downloaded and checked
+publishing. The v0.1.1 artifacts were independently downloaded and checked
 after publication. Release artifacts are not signed in v0.1.
 
 ## Install from an archive
@@ -41,7 +41,7 @@ until the tagged workflow and its artifact checks pass.
 
 ## Support status
 
-v0.1.0 is an early developer release, not a hosted service or a promise of
+v0.1.1 is an early developer release, not a hosted service or a promise of
 long-term platform compatibility. Report reproducible problems with the
 version, operating system, command, sanitized fixture shape, and complete
 error. Never attach credentials, authentication headers, private RPC URLs, or
@@ -53,3 +53,10 @@ The core CLI version, fixture schema version, and release documentation are
 related but distinct. The canonical fixture schema remains owned by this
 repository. The GitHub Action has its own release version and must consume a
 released core interface rather than an unreleased commit.
+
+## JavaScript adapter package
+
+The Node.js/TypeScript adapter is independently distributed as
+`@stellar-replay/cli-adapter`. Version `0.1.1` targets core `v0.1.1` and
+requires Node.js 18 or newer. It invokes a locally installed `stellar-replay`
+binary; installing the npm package does not install or replace the core binary.

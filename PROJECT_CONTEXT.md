@@ -45,7 +45,7 @@ Go is selected over TypeScript for a single cross-platform binary, simple HTTP c
 
 ## Versioning and releases
 
-The core product owns the `stellar-replay` CLI version and releases `v0.1.0` independently. The Action uses its own semantic version and should depend only on a released core binary/interface, never an unreleased commit. Documentation is versioned by compatibility with the core release and identifies the release or branch it describes; it is not a monolithic binary release.
+The core product owns the `stellar-replay` CLI version and releases `v0.1.1` independently. The Node.js/TypeScript adapter is distributed as `@stellar-replay/cli-adapter` at the matching `0.1.1` package version; it delegates to a locally installed released core binary and does not duplicate replay semantics. The Action uses its own semantic version and should depend only on a released core binary/interface, never an unreleased commit. Documentation is versioned by compatibility with the core release and identifies the release or branch it describes; it is not a monolithic binary release.
 
 ## Trust and security
 

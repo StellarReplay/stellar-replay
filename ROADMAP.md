@@ -1,6 +1,6 @@
 # Stellar Replay Roadmap
 
-This is the executable master plan. Statuses are `NOT_STARTED`, `IN_PROGRESS`, `BLOCKED`, `READY_FOR_REVIEW`, and `COMPLETE`. A phase is complete only when its acceptance criteria, local verification, phase report, approved commit, GitHub synchronization, and applicable hosted checks pass. v0.1.0 is released; future work is productization-gated and must not silently expand the frozen core contract.
+This is the executable master plan. Statuses are `NOT_STARTED`, `IN_PROGRESS`, `BLOCKED`, `READY_FOR_REVIEW`, and `COMPLETE`. A phase is complete only when its acceptance criteria, local verification, phase report, approved commit, GitHub synchronization, and applicable hosted checks pass. v0.1.1 is released; future work is productization-gated and must not silently expand the frozen core contract.
 
 ## Priority fence
 
@@ -33,7 +33,7 @@ The full ownership map is maintained in [docs/REPOSITORY_ARCHITECTURE.md](docs/R
 
 ## Strategy hierarchy
 
-The long-term plan is interpreted as **product era → milestone → phase → task → verification evidence**. Completed phases 0–12 form Era 1 Foundation/MVP/Release. The organization is now in Era 2, Developer Productization: the core and Action are released v0.1.0, while the docs repository remains an independently versioned documentation surface. Future phase cards must include objective, dependencies, affected repositories, scope and non-scope, tests, security, documentation, CI, acceptance, commands, evidence, risks, rollback, release impact, agent/review guidance, network needs, and maintainer authorization.
+The long-term plan is interpreted as **product era → milestone → phase → task → verification evidence**. Completed phases 0–12 form Era 1 Foundation/MVP/Release. The organization is now in Era 2, Developer Productization: the core is released v0.1.1, the Action remains independently versioned at v0.1.0, and the docs repository remains an independently versioned documentation surface. Future phase cards must include objective, dependencies, affected repositories, scope and non-scope, tests, security, documentation, CI, acceptance, commands, evidence, risks, rollback, release impact, agent/review guidance, network needs, and maintainer authorization.
 
 ## Phase register
 

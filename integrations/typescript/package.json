@@ -1,0 +1,19 @@
+{
+  "name": "@stellar-replay/cli-adapter",
+  "version": "0.1.0",
+  "description": "Node.js and TypeScript adapter for the released stellar-replay CLI",
+  "type": "module",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js",
+      "default": "./src/index.js"
+    }
+  },
+  "files": ["src", "README.md"],
+  "scripts": {"test": "node --test"},
+  "engines": {"node": ">=18"},
+  "license": "Apache-2.0"
+}

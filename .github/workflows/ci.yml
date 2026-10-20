@@ -17,6 +17,9 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
       - uses: actions/setup-go@v6
         with:
           go-version-file: go.mod
@@ -30,6 +33,8 @@ jobs:
         run: Write-Output "gofmt is enforced by the Linux and macOS matrix runners; Windows continues with build, test, vet, smoke, and clean-tree checks."
       - name: Test Go packages
         run: go test ./...
+      - name: Test TypeScript adapter
+        run: npm --prefix integrations/typescript test
       - name: Vet Go packages
         run: go vet ./...
       - name: Build CLI

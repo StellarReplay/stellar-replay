@@ -15,6 +15,9 @@
 - Expanded the checked-in edge-case corpus with deterministic ledger-retention
   error replay and rejection fixtures for malformed responses, response-ID
   mismatches, invalid response branches, and unsupported pagination fields.
+- Added a verified downstream integration example using Stellar's official
+  `stellar/js-stellar-sdk` Soroban `rpc.Server#getLedgerEntries` API against a
+  loopback replay server.
 
 ## v0.1.0 - 2026-10-08
 

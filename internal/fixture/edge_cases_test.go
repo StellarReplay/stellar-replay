@@ -18,6 +18,15 @@ func TestCheckedInEdgeCaseFixtures(t *testing.T) {
 	if !strings.Contains(candidate.Response.Error.Message, "retention") {
 		t.Fatalf("retention fixture message was lost: %q", candidate.Response.Error.Message)
 	}
+
+	sdkFixture := filepath.Join("..", "..", "fixtures", "edge-cases", "get-ledger-entries-stellar-js-sdk.json")
+	sdkCandidate, err := Load(sdkFixture)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(sdkCandidate.Response.Result) == 0 || !strings.Contains(string(sdkCandidate.Response.Result), "liveUntilLedgerSeq") {
+		t.Fatalf("SDK integration fixture did not preserve TTL metadata: %s", sdkCandidate.Response.Result)
+	}
 }
 
 func TestInvalidEdgeCaseFixturesAreRejected(t *testing.T) {

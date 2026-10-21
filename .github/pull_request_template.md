@@ -20,3 +20,9 @@
 - [ ] No live network dependency added to default tests
 - [ ] Request matching / error behavior considered
 
+## Release notes
+
+- Release or compatibility impact:
+- [ ] No literal escape sequences were used in this description; headings and
+  lists render as normal Markdown.
+

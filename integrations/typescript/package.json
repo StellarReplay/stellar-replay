@@ -12,12 +12,24 @@
       "default": "./src/index.js"
     }
   },
-  "files": ["src", "README.md"],
-  "scripts": {"test": "node --test"},
-  "engines": {"node": ">=18"},
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "license": "Apache-2.0",
-  "repository": "github:StellarReplay/stellar-replay",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StellarReplay/stellar-replay.git"
+  },
   "homepage": "https://github.com/StellarReplay/stellar-replay/tree/main/integrations/typescript",
   "bugs": "https://github.com/StellarReplay/stellar-replay/issues",
-  "publishConfig": {"access": "public"}
+  "publishConfig": {
+    "access": "public"
+  }
 }

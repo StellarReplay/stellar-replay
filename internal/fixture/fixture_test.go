@@ -115,6 +115,55 @@ func TestRejectsInvalidFixtures(t *testing.T) {
 	}
 }
 
+func TestSchemaVersionCompatibilityMatrix(t *testing.T) {
+	tests := []struct {
+		name    string
+		version string
+		valid   bool
+	}{
+		{name: "current schema v1", version: SchemaVersion, valid: true},
+		{name: "future schema v2", version: "2"},
+		{name: "empty schema", version: ""},
+		{name: "prefixed schema", version: "v1"},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			f := validFixture(`{"keys":["` + validLedgerKey + `"]}`)
+			f.SchemaVersion = test.version
+			err := validateStructure(f)
+			if test.valid {
+				if err != nil {
+					t.Fatalf("current schema was rejected: %v", err)
+				}
+				return
+			}
+			if err == nil || !strings.Contains(err.Error(), "unsupported schema version") {
+				t.Fatalf("schema version %q was accepted or produced the wrong error: %v", test.version, err)
+			}
+		})
+	}
+}
+
+func TestSchemaVersionCompatibilitySurvivesDiskLoad(t *testing.T) {
+	dir := t.TempDir()
+	path := filepath.Join(dir, "future-schema.json")
+	f := validFixture(`{"keys":["` + validLedgerKey + `"]}`)
+	if err := Seal(&f); err != nil {
+		t.Fatal(err)
+	}
+	f.SchemaVersion = "2"
+	data, err := json.Marshal(f)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(path, data, 0o600); err != nil {
+		t.Fatal(err)
+	}
+	if _, err := Load(path); err == nil || !strings.Contains(err.Error(), "unsupported schema version") {
+		t.Fatalf("future schema fixture was not rejected on load: %v", err)
+	}
+}
+
 func TestValidatePreservesJSONRPCIDTypes(t *testing.T) {
 	f := validFixture(`{"keys":["AQIDBA=="]}`)
 	for _, responseID := range []string{`"1"`, `null`, `1.0`} {

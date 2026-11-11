@@ -2,7 +2,12 @@
 
 ## Unreleased
 
-No unreleased changes.
+- Added the v0.1.1 conformance matrix, compatibility/deprecation policy, and
+  fixture provenance review guidance.
+- Added table-driven schema-version compatibility tests, including disk-load
+  rejection of future schema versions.
+- Recorded the current release, integration, and adoption evidence without
+  claiming external usage that has not been independently verified.
 
 ## v0.1.1 - 2026-10-20
 

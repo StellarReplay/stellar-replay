@@ -1,5 +1,9 @@
 # Fixture schema v1
 
+Compatibility and deprecation rules are maintained in
+[`COMPATIBILITY.md`](COMPATIBILITY.md); provenance review guidance is in
+[`FIXTURE_PROVENANCE.md`](FIXTURE_PROVENANCE.md).
+
 The canonical fixture format is owned by `stellar-replay`. Other repositories may
 consume this format, but must not silently redefine it. A schema change requires a
 new `schemaVersion` and a compatibility note.

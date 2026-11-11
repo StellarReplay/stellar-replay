@@ -71,7 +71,7 @@ go test ./examples -run TestOfflineReplayWorkflow -count=1
 ```
 
 See the executable [demo](docs/DEMO.md), [Soroban integration example](docs/SOROBAN_INTEGRATION.md), [downstream Stellar JS SDK integration](examples/downstream/stellar-js-sdk/README.md), [JavaScript/TypeScript integration](docs/JAVASCRIPT_INTEGRATION.md), [command reference](docs/COMMANDS.md),
-[supported methods](docs/METHODS.md), and [troubleshooting guide](docs/TROUBLESHOOTING.md).
+[supported methods](docs/METHODS.md), [conformance matrix](docs/CONFORMANCE_MATRIX.md), [compatibility policy](docs/COMPATIBILITY.md), and [troubleshooting guide](docs/TROUBLESHOOTING.md).
 
 ## Fixture philosophy
 
@@ -86,7 +86,7 @@ for installation and checksum verification. For source development, read
 [CONTRIBUTING.md](CONTRIBUTING.md), [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md),
 and the current phase in [ROADMAP.md](ROADMAP.md).
 
-Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository provides the versioned `v0.1.0` Action integration for the released core. The independently distributable [`@stellar-replay/cli-adapter`](https://www.npmjs.com/package/@stellar-replay/cli-adapter) package provides Node.js/TypeScript access to the released CLI. This core README remains sufficient to understand the product and its boundaries.
+Extended guides and integration documentation live in the companion [stellar-replay-docs](https://github.com/StellarReplay/stellar-replay-docs) repository. The [stellar-replay-action](https://github.com/StellarReplay/stellar-replay-action) repository provides the versioned `v0.1.1` Action integration for the released core. The independently distributable [`@stellar-replay/cli-adapter`](https://www.npmjs.com/package/@stellar-replay/cli-adapter) package provides Node.js/TypeScript access to the released CLI. This core README remains sufficient to understand the product and its boundaries.
 
 ## Security
 
